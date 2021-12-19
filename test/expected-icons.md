@@ -1,0 +1,51 @@
+# Test Icons
+
+- Icons from Freeplane
+  - [ ] ToDo
+    - - [ ]
+  - [x] Done
+    - - [x]
+  - :hourglass: Waiting / blocked
+    - - [w]
+    - :hourglass:
+  - [x] Covered / Discussed
+    - N.A.
+    - ?
+      - :heavy_check_mark:
+  - [-] Canceled
+    - - [/]
+    - ?
+      - :negative_squared_cross_mark:
+      - :x:
+  - :repeat: Recurring
+    - - [r]
+  - :calendar: Appointment / Meeting / Calendar entry
+    - - [t]
+    - :calendar:
+    - ? :date:
+  - :information_source: Info
+    - -[i]
+    - :information_source:
+  - :exclamation: !
+    - -[!]
+    - :exclamation:
+  - :question: ?
+    - - [?]
+    - :question:
+  - :paperclip: Update
+    - :paperclip:
+  - :stop_sign: Not further pursued
+    - :stop_sign:
+  - [0%] [25%] [50%] [75%] [100%] Progress icons
+    - - [25%] etc.?
+    - ?
+  - :one: :two: :three: etc.Priority
+    - Adding (1) etc.?
+    - :one: :two: :three: etc.
+  - :very_negative: :negative: :neutral: :positive: :very_positive: Rating
+    - (--, -, 0, +, ++, ...)
+    - ?
+      - :thumbsup:
+      - :thumbsdown:
+      - :arrow_double_up: etc.
+  - :idea: :bomb: :pencil: :stop: :prepare: :go: other?
