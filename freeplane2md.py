@@ -170,10 +170,9 @@ def map_links(node):
     link_str = node.attrib.get('LINK', "")
     if not text:
         print("Node without TEXT attribute: ", node.attrib.get('ID'), file=stderr)
-        # TODO: Regression on empty nodes with icons, see test-edge-cases
-        # TODO: Turn into stable solution
-        # if link_str:
-        #     text = link_str
+        # Use link as text to allow for clickable links
+        if link_str:
+            text = link_str
     if link_str:
         # Simplify to automatic links for URLs or e-mail addresses and Wiki-links for Markdown files
         if text == link_str or text == link_str.replace("mailto:", ""):
