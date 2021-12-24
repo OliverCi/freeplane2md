@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 freeplane2md.py - Convert Freeplane mindmaps into Markdown format 
