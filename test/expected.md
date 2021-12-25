@@ -11,8 +11,8 @@
 - Subnote with long text
   - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 - Tests for icons
-  - [x] Checked
-  - [-] Crossed
+  - :heavy_check_mark: Checked
+  - :heavy_multiplication_x: Crossed
   - :hourglass: Waiting
   - :stop_sign: On hold
   - :repeat: Recurring / Review

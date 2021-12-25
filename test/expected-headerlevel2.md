@@ -19,8 +19,8 @@
 
 ## Tests for icons
 
-- [x] Checked
-- [-] Crossed
+- :heavy_check_mark: Checked
+- :heavy_multiplication_x: Crossed
 - :hourglass: Waiting
 - :stop_sign: On hold
 - :repeat: Recurring / Review

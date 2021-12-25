@@ -10,6 +10,7 @@ freeplane2md converts mindmaps in Freeplane format into Markdown.
 - integrate the content into your second brain or Zettelkasten, e.g. with [Obsidian](https://obsidian.md), [Dendron](
 https://www.dendron.so/), [Foam](https://foambubble.github.io/foam/) or similar,
 - publish the result as a text document.
+
 Furthermore, Freeplane can this way be used as a more visual tool to create Markdown in the first place, e.g. brainstorming with many people.
 
 There are already different scripts and plugins exporting or converting towards Markdown. Though, these are so far limited, as they mainly export all nodes as headers and also do not handle many Freeplane features, such as links and icons (e.g. <https://github.com/memoryblade/mm2md/blob/master/mm2md.py>, <https://github.com/gelso/freeplane2markdown>)
@@ -24,7 +25,7 @@ There are already different scripts and plugins exporting or converting towards 
   - For local links within the document, custom IDs are generated from the Freeplane node IDs.
   - Links to local Markdown files are converted to `[[WikiLinks]]` as understood by many tools.
 - Freeplane connections between nodes are converted to document local links
-- Checkbox icons are converted to Markdown extended syntax checkboxes (`- [ ], - [x]`).
+- Checkbox icons are converted to Markdown extended syntax checkboxes (`- [ ]`, `- [x]`).
 
 ## Usage
 
@@ -42,6 +43,10 @@ There are already different scripts and plugins exporting or converting towards 
     -v --verbose                Output additional information to stderr.
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
+    -t --todo                   Treat as to-do list. Translate non header
+                                nodes without icons to tasks with checkboxes
+                                (- [ ]) and nodes with checkmark icons to
+                                done tasks (- [x]).
 
 See also `freeplane2md.py -h`
 

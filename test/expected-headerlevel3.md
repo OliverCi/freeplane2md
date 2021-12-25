@@ -21,9 +21,9 @@
 
 ## Tests for icons
 
-### [x] Checked
+### :heavy_check_mark: Checked
 
-### [-] Crossed
+### :heavy_multiplication_x: Crossed
 
 ### :hourglass: Waiting
 

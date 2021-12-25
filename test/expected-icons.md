@@ -8,11 +8,11 @@
   - :hourglass: Waiting / blocked
     - - [w]
     - :hourglass:
-  - [x] Covered / Discussed
+  - :heavy_check_mark: Covered / Discussed
     - N.A.
     - ?
       - :heavy_check_mark:
-  - [-] Canceled
+  - :heavy_multiplication_x: Canceled
     - - [/]
     - ?
       - :negative_squared_cross_mark:

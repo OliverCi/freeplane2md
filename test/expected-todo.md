@@ -1,0 +1,42 @@
+# Test
+
+- [ ] Mindmap as test input for mm2md
+- [ ] Created with Freeplane
+  - [ ] Freeplane version 1.9.11
+- [ ] Node
+  - [ ] Subnote 1
+    - [ ] Subsubnote
+      - [ ] Subsubsubnote
+  - [ ] Subnote 2
+- [ ] Subnote with long text
+  - [ ] Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+- [ ] Tests for icons
+  - [x] Checked
+  - :heavy_multiplication_x: Crossed
+  - :hourglass: Waiting
+  - :stop_sign: On hold
+  - :repeat: Recurring / Review
+  - [ ] Explicit task with checkbox
+  - [x] Done task
+  - [ ] Priorities
+    - :one: Priority 1
+    - :two: Priority 2
+    - :three: Priority 3
+  - [ ] :two: Multiple icons
+- [ ] Links and connections
+  - [ ] Link to URL
+    - [ ] <https://www.freeplane.org/wiki/index.php/Home>
+  - [ ] Link to e-mail
+    - [ ] <mailto:example@example.com>
+  - [ ] Link to local file
+    - [ ] [test-icons.mm](test-icons.mm)
+  - [ ] Link to local Markdown file
+    - [ ] [[test-icons]]
+  - [ ] Target for connection {#1658607488}
+  - [ ] Connection to node backwards [#1658607488](#1658607488)
+  - [ ] Connection to node forward [#470163758](#470163758)
+  - [ ] Second target for connection {#470163758}
+  - [ ] Target for hyperlink {#ID_1195614690}
+  - [ ] [Local hyperlink (not connection) backwards](#ID_1195614690)
+  - [ ] [Local hyperlink forward](#ID_244066349)
+  - [ ] Second target for hyperlink {#ID_244066349}

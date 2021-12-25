@@ -38,6 +38,10 @@ Options:
     -v --verbose                Output additional information to stderr.
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
+    -t --todo                   Treat as to-do list. Translate non header
+                                nodes without icons to tasks with checkboxes
+                                (- [ ]) and nodes with checkmark icons to
+                                done tasks (- [x]).
 
 """
 
@@ -55,12 +59,10 @@ wikilink_targets = {".md", ".markdown"}
 
 # Translation of icons
 icon_mapping = {}
-# TODO: [-] -> [/] in extended chebox syntax
-icon_mapping_ok = {'button_ok': '[x]', 'button_cancel': '[-]'}
-# TODO: How to combine with default task items as "- [ ]"?
 icon_mapping_task = {'checked': '[x]', 'unchecked': '[ ]'}
 # Icons with a name different from the matching emoji shortcode
 icon_mapping_shortcode = {'stop-sign': ':stop_sign:', 'info': ':information_source:'
+    , 'button_ok': ':heavy_check_mark:', 'button_cancel': ':heavy_multiplication_x:'
     , 'yes': ':exclamation:', 'help': ':question:'
     , 'attach': ':paperclip:', 'clanbomber': ':bomb:'
     , 'full-1': ':one:', 'full-2': ':two:', 'full-3': ':three:'
@@ -74,15 +76,16 @@ matching_icons = {'hourglass', 'calendar'}
 icon_mapping_matching = {key:(':'+key+':') for key in matching_icons}
 # TODO: Or directly define (redundand) dictionary?
 # Map task related icons to extended task syntax for Markdown
+icon_mapping_todo = {'button_ok': '[x]'}
 icon_mapping_extended_tasks = {'stop-sign': '[s]', 'info': '[i]'
     , 'yes': '[!]', 'help': '[?]'
-    , 'revision': '[r]', 'hourglass': '[w]'
+    , 'revision': '[r]', 'hourglass': '[w]', 'calendar': '[t]'
     , '0%': '[0%]', '25%': '[25%]', '50%': '[50%]', '75%': '[75%]', '100%': '[100%]'
+    , 'button_cancel': '[/]'
     }
 
 # TODO: Combine mappings according to options
 icon_mapping.update(icon_mapping_task)
-icon_mapping.update(icon_mapping_ok)
 icon_mapping.update(icon_mapping_extended_tasks)
 icon_mapping.update(icon_mapping_matching)
 icon_mapping.update(icon_mapping_shortcode)
@@ -93,10 +96,10 @@ def main():
     args = docopt(__doc__, version='freeplane2md 0.5')
     if args['--verbose']:
         print(args, file=stderr)
-    convert_file(args['<mindmap>'], args['<markdownfile>'], headerlevel=int(args['--headerlevel']))
+    convert_file(args['<mindmap>'], args['<markdownfile>'], headerlevel=int(args['--headerlevel']), todo=args['--todo'])
 
 
-def convert_file(freeplane_path, markdown_path, headerlevel=1):
+def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False):
     """Convert Freeplane freeplane_path to Markdown markdown_path
 
     globals:
@@ -105,6 +108,9 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1):
     ending -- remember ending of the last line to avoid redundand empty lines
     """
     global all_connections, all_links, ending
+
+    if todo:
+        icon_mapping.update(icon_mapping_todo)
 
     ending = '\n'
     tree = ET.parse(freeplane_path)
@@ -121,14 +127,16 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1):
             # Collect all link targets for later insertion of custom-id
             all_links = link_targets(root_node)
 
-            for line in process_node(root_node, 1, headerlevel):
+            for line in process_node(root_node, 1, headerlevel, todo):
                 print(line, file=markdown_file)
 
 
-def process_node(node, level, headerlevel=1):
+def process_node(node, level, headerlevel=1, todo=False):
     """Recursively process conversion of a single node and its subtree"""
 
     global ending
+
+    icons_md = map_icons(node)
 
     # Make configurable up to which level convert to header and from which to list item 
     if level <= headerlevel:
@@ -140,13 +148,15 @@ def process_node(node, level, headerlevel=1):
         ending = '\n'
     else:
         # Print text as list item with the correct indentation level
-        markers = indent*(level-headerlevel-1) + "- "
+        # Add checkbox on nodes without icons, if option is set
+        bullet = ("- " if icons_md or not todo else "- [ ] ")
+        markers = indent*(level-headerlevel-1) + bullet 
         ending = ''
 
-    yield markers + map_icons(node) + map_links(node) + add_custom_ids(node) + ending
+    yield markers + icons_md + map_links(node) + add_custom_ids(node) + ending
 
     for child in node.findall('node'):
-        yield from process_node(child, level+1, headerlevel)
+        yield from process_node(child, level+1, headerlevel, todo)
 
 
 def map_icons(node):

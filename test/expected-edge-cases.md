@@ -48,7 +48,7 @@
 ## Some combination of features
 
 - Link to URL containing icons
-  - [x] [-] :calendar: <https://www.freeplane.org/wiki/index.php/Home>
+  - :heavy_check_mark: :heavy_multiplication_x: :calendar: <https://www.freeplane.org/wiki/index.php/Home>
 - Connection and hyperlink from the same node
   - [Source for cConnection and hyperlink](#ID_333936676) [#1658607488](#1658607488)
   - Target for connection {#1658607488}

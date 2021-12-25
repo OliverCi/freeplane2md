@@ -43,4 +43,9 @@ def test_edge_cases():
     with open('test/expected-edge-cases.md') as expected, open('test/test-edge-cases.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
+def test_todo_list():
+    """Treat mindmap as to-do list as with --todo"""
+    freeplane2md.convert_file('test/test.mm', 'test/test-todo.md', todo=True)
+    with open('test/expected-todo.md') as expected, open('test/test-todo.md') as testee:
+        assert(expected.readlines() == testee.readlines())
 
