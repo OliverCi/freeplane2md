@@ -11,7 +11,7 @@ freeplane2md converts mindmaps in Freeplane format into Markdown.
 https://www.dendron.so/), [Foam](https://foambubble.github.io/foam/) or similar,
 - publish the result as a text document.
 
-Furthermore, Freeplane can this way be used as a more visual tool to create Markdown in the first place, e.g. brainstorming with many people.
+Furthermore, Freeplane can this way be used as a more visual tool to create Markdown in the first place, e.g. when brainstorming with many people.
 
 There are already different scripts and plugins exporting or converting towards Markdown. Though, these are so far limited, as they mainly export all nodes as headers and also do not handle many Freeplane features, such as links and icons (e.g. <https://github.com/memoryblade/mm2md/blob/master/mm2md.py>, <https://github.com/gelso/freeplane2markdown>)
 
@@ -30,6 +30,10 @@ There are already different scripts and plugins exporting or converting towards 
 ## Usage
 
 `freeplane2md.py [options] <mindmap> <markdownfile>`
+
+or depending on your python installation
+
+`python freeplane2md.py [options] <mindmap> <markdownfile>`
 
 ### Arguments
 
@@ -50,12 +54,28 @@ There are already different scripts and plugins exporting or converting towards 
 
 See also `freeplane2md.py -h`
 
-freeplane2md can as well be used by importing as a module from other scripts and calling the function `convert_file`.
+## Examples
+
+Several examples can be found in the folder [test/](test/). E.g. the mindmap [test.mm](test/test.mm) shows most supported features and is converted to [test.md](test/test.md), if no options are set.
+
+## Installation
+
+The script requires Python 3 and the following packages need to be installed (e.g using pip):
+
+- [docopt](https://pypi.org/project/docopt/)
+- [validators](https://pypi.org/project/validators/)
+
+Running the automated tests requires
+[pytest](https://pypi.org/project/pytest/).
+
+## Usage as library
+
+freeplane2md can as well be used from other scripts by importing as a module and calling the function `convert_file`.
 
 ## Planned improvements
 
 - Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping in the same node.
 - Option to convert icons to UTF-8 representation of emojis or other characters.
-- Option to translate non header nodes to tasks with checkboxes for converting todo lists.
 - Provide more examples and automated tests.
 - Support further Freeplane features, such as Notes, embedded HTML or $\LaTeX$.
+- Better help for installation 
