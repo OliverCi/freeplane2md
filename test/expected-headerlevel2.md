@@ -1,10 +1,10 @@
 # Test
 
-## Mindmap as test input for mm2md
+## Mindmap as test input for freeplane2md
 
 ## Created with Freeplane
 
-- Freeplane version 1.9.11
+- Freeplane version 1.9.12
 
 ## Node
 
