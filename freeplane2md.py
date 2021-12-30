@@ -95,7 +95,7 @@ icon_mapping.update(icon_mapping_shortcode)
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.6')
+    args = docopt(__doc__, version='freeplane2md 0.7')
     if args['--verbose']:
         print(args, file=stderr)
     convert_file(args['<mindmap>'], args['<markdownfile>'], headerlevel=int(args['--headerlevel']), todo=args['--todo'])
