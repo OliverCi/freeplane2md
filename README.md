@@ -24,8 +24,9 @@ There are already different scripts and plugins exporting or converting towards 
   - Links to URLs or E-Mail addresses are converted to automatic links.
   - For local links within the document, custom IDs are generated from the Freeplane node IDs.
   - Links to local Markdown files are converted to `[[WikiLinks]]` as understood by many tools.
-- Freeplane connections between nodes are converted to document local links
+- Freeplane connections between nodes are converted to document local links.
 - Checkbox icons are converted to Markdown extended syntax checkboxes (`- [ ]`, `- [x]`).
+- Basic support of HTML embedded in nodes. (May disarray nesting of related nodes translated to consecutive paragraphs).
 
 ## Usage
 
@@ -74,8 +75,9 @@ freeplane2md can as well be used from other scripts by importing as a module and
 
 ## Planned improvements
 
+- Support further icons and option to convert emoji icons to UTF-8 representation.
 - Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping in the same node.
-- Option to convert icons to UTF-8 representation of emojis or other characters.
+- Better solution for HTML handling, where it interferes with indentation and nesting of consecutive paragraphs.
 - Provide more examples and automated tests.
-- Support further Freeplane features, such as Notes, embedded HTML or $\LaTeX$.
-- Better help for installation 
+- Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
+- Easier installation.

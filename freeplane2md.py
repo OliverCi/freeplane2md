@@ -49,7 +49,9 @@ from docopt import docopt
 from sys import stderr, stdout
 import os
 import xml.etree.ElementTree as ET
+# from lxml import etree as ET
 import validators
+import re
 
 # Markdown indentation per level
 indent = "  "
@@ -153,7 +155,8 @@ def process_node(node, level, headerlevel=1, todo=False):
         markers = indent*(level-headerlevel-1) + bullet 
         ending = ''
 
-    yield markers + icons_md + map_links(node) + add_custom_ids(node) + ending
+    yield ( markers + icons_md + map_links(node) + add_custom_ids(node)
+        + map_richcontent(node) + ending )
 
     for child in node.findall('node'):
         yield from process_node(child, level+1, headerlevel, todo)
@@ -176,13 +179,17 @@ def map_icons(node):
 
 def map_links(node):
     """Augment node text with link, if present"""
-    text = node.attrib.get('TEXT', "")
+    text = node.attrib.get('TEXT')
     link_str = node.attrib.get('LINK', "")
-    if not text:
+    # TODO: Distinguish none or empty text?
+    if text is None:
         print("Node without TEXT attribute: ", node.attrib.get('ID'), file=stderr)
+    if not text:
         # Use link as text to allow for clickable links
         if link_str:
             text = link_str
+        else:
+            text = ""
     if link_str:
         # Simplify to automatic links for URLs or e-mail addresses and Wiki-links for Markdown files
         if text == link_str or text == link_str.replace("mailto:", ""):
@@ -201,6 +208,23 @@ def map_links(node):
             # Normal Markdown link
             text = '[' + text + '](' + link_str + ')'
     return text
+
+
+def map_richcontent(node):
+    """Return HTML content of node as string usable within Markdown"""
+    html = ""
+    if node.find('richcontent'):
+        html_body = node.find('richcontent').find('html').find('body')
+        html = ET.tostring(html_body, method='html', encoding='unicode')
+        # Remove empty or whitespace only lines inbetween
+        # (strip and splitlines take care of OS line break differences)
+        html = "".join([s for s in html.strip().splitlines(True) if s.strip()])
+        # Remove surrounding body tags
+        html = re.sub("^\s*<body>", "", html)
+        html = re.sub("</body>\s*$", "", html)
+        # Exactly one empty line before and after HTML block
+        html = "\n\n" + html.strip() + "\n"
+    return html
 
 
 def add_custom_ids(node):

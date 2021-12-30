@@ -49,3 +49,10 @@ def test_todo_list():
     with open('test/expected-todo.md') as expected, open('test/test-todo.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
+def test_freeplaneUserGuide():
+    """Test embedded HTML with Freeplane user guide Mindmap
+    (For automatic test only first chapter is taken)
+    """
+    freeplane2md.convert_file('test/freeplaneUserGuide-introduction.mm', 'test/freeplaneUserGuide-introduction.md')
+    with open('test/expected-freeplaneUserGuide-introduction.md') as expected, open('test/freeplaneUserGuide-introduction.md') as testee:
+        assert(expected.readlines() == testee.readlines())
