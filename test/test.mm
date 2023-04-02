@@ -1,9 +1,9 @@
-<map version="freeplane 1.9.8">
+<map version="freeplane 1.9.13">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
 <node TEXT="Test" FOLDED="false" ID="ID_696401721" CREATED="1610381621824" MODIFIED="1636416896760" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties fit_to_viewport="false" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
@@ -69,7 +69,7 @@
 </map_styles>
 </hook>
 <hook NAME="AutomaticEdgeColor" COUNTER="17" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="Mindmap as test input for freeplane2md" POSITION="right" ID="ID_1961287667" CREATED="1636416902754" MODIFIED="1640449854462">
+<node TEXT="Mind map as test input for freeplane2md" POSITION="right" ID="ID_1961287667" CREATED="1636416902754" MODIFIED="1661007661394">
 <edge COLOR="#ff0000"/>
 </node>
 <node TEXT="Created with Freeplane" POSITION="right" ID="ID_1849349514" CREATED="1636418324809" MODIFIED="1636418337011">

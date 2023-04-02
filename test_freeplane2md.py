@@ -1,8 +1,9 @@
 """Automated tests for freeplane2md"""
 
+import unittest
 import pytest
 import freeplane2md
-import filecmp
+# import filecmp
 
 
 def test_convert_file():
@@ -10,6 +11,7 @@ def test_convert_file():
     freeplane2md.convert_file('test/test.mm', 'test/test.md')
     with open('test/expected.md') as expected, open('test/test.md') as testee:
         assert(expected.readlines() == testee.readlines())
+    # TODO: Check, if MD file was really created by this test, e.g. via the timestamp.
 
 def test_headerlevel_2():
     """Testing option for different headerlevel"""
@@ -44,15 +46,31 @@ def test_edge_cases():
         assert(expected.readlines() == testee.readlines())
 
 def test_todo_list():
-    """Treat mindmap as to-do list as with --todo"""
+    """Treat mind map as to-do list as with --todo"""
     freeplane2md.convert_file('test/test.mm', 'test/test-todo.md', todo=True)
     with open('test/expected-todo.md') as expected, open('test/test-todo.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
 def test_freeplaneUserGuide():
-    """Test embedded HTML with Freeplane user guide Mindmap
+    """Test embedded HTML with Freeplane user guide Mind map
     (For automatic test only first chapter is taken)
     """
     freeplane2md.convert_file('test/freeplaneUserGuide-introduction.mm', 'test/freeplaneUserGuide-introduction.md')
     with open('test/expected-freeplaneUserGuide-introduction.md') as expected, open('test/freeplaneUserGuide-introduction.md') as testee:
         assert(expected.readlines() == testee.readlines())
+
+# ---
+
+def test_markdown_path():
+    """Test determining output filename"""
+    # Path written out
+    assert(freeplane2md.markdown_path({'<mindmap>': "test/test.mm", '--output': False}) == "test/test.md" )
+    # Long path expression starting from root directory with slash '/'
+    assert(freeplane2md.markdown_path({'<mindmap>': "/A/B/C/D/E/F/G/H/I/J/test.mm", '--output': False}) == "/A/B/C/D/E/F/G/H/I/J/test.md" )
+    # Output explicitely given via option
+    assert(freeplane2md.markdown_path({'<mindmap>': "test/test.mm", '--output': "explicit_given.md"}) == "explicit_given.md" )
+    # Just filename without paht expression
+    assert(freeplane2md.markdown_path({'<mindmap>': "local.mm", '--output': False}) == "local.md" )
+    # Check, if single dot '.' confuses function
+    assert(freeplane2md.markdown_path({'<mindmap>': "./local.mm", '--output': False}) == "./local.md" )
+

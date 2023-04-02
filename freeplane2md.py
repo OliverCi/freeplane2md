@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 
 """
-freeplane2md.py - Convert Freeplane mindmaps into Markdown format 
+freeplane2md.py - Convert Freeplane mind maps into Markdown format 
 
 License:
     Copyright (c) 2021 Oliver Ciupke, oliver.ciupke@gmail.com
     Licensed under the terms of GPLv3, see http://www.gnu.org/licenses/
 
 Usage:
-    freeplane2md.py [options] <mindmap> <markdownfile>
+    freeplane2md.py [options] <mindmap>
 
 Description:
-    Converts mindmaps in xml format as used by Freeplane (www.freeplane.org)
-    into Markdown. By default, the root node becomes the title (header 1),
-    other nodes become list items with the appropriate nesting level.
-    Converting further levels of subnotes to headers can be configured using
-    the option --headerlevel or -l.
+
+    Converts mind maps in xml format as used by Freeplane (www.freeplane.org)
+    into Markdown. The output path name becomes the input path name with
+    '.mm' replaced with '.md', unless explicitly given with --output. By
+    default, the root node becomes the title (header 1), other nodes become
+    list items with the appropriate nesting level. Converting further levels
+    of subnotes to headers can be configured using the option --headerlevel
+    or -l.
 
     Freeplane icons are translated to their correspoding Markdown
     representation or emoji shortcodes, if one exists. 
@@ -23,19 +26,20 @@ Description:
     Links to URLs and external files are converted to Markdown links. Links to
     local Markdown files are converted to [[WikiLinks]].
 
-    Local links within the same Mindmap are converted to Markdown links to
+    Local links within the same mind map are converted to Markdown links to
     custom IDs (aka. heading IDs) generated from Freeplane's node IDs. 
 
     Connections between nodes are converted into links as well. 
 
 Arguments:
-    <mindmap>   Mindmap file to be converted, usually with ending .mm
-    <markdownfile>  Markdownfile to be written. Use "-" for stdout.
+    <mindmap>   Mind map file to be converted, usually with ending .mm
 
 Options:
     -h --help                   Show this screen.
     -V --version                Show version.
     -v --verbose                Output additional information to stderr.
+    -o --output=<markdownfile>  Specify Markdown-file to be written to.
+                                "-o -" writes to stdout.
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
     -t --todo                   Treat as to-do list. Translate non header
@@ -95,11 +99,27 @@ icon_mapping.update(icon_mapping_shortcode)
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.7')
+    args = docopt(__doc__, version='freeplane2md 0.8-dev')
+
     if args['--verbose']:
         print(args, file=stderr)
-    convert_file(args['<mindmap>'], args['<markdownfile>'], headerlevel=int(args['--headerlevel']), todo=args['--todo'])
 
+    convert_file(args['<mindmap>'], markdown_path(args), headerlevel=int(args['--headerlevel']), todo=args['--todo']) 
+
+
+def markdown_path(args):
+    """Determine output filename(s) from input filename(s)
+
+    Output path/filename is the input path/filename with '.mm' replaced with
+    '.md', unless explicitely given with --output.
+    """
+    # Check if outputfile was specified
+    if args['--output']:
+        return args['--output']
+    else:
+        # Use input filename and change extension to ".md"
+        return os.path.splitext(args['<mindmap>'])[0] + '.md'
+    
 
 def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False):
     """Convert Freeplane freeplane_path to Markdown markdown_path

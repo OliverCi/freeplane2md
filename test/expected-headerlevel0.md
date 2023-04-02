@@ -1,5 +1,5 @@
 - Test
-  - Mindmap as test input for freeplane2md
+  - Mind map as test input for freeplane2md
   - Created with Freeplane
     - Freeplane version 1.9.12
   - Node

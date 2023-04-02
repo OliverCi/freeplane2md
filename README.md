@@ -1,8 +1,8 @@
 # freeplane2md
 
-freeplane2md converts mindmaps in Freeplane format into Markdown.
+freeplane2md converts mind maps in Freeplane format into Markdown.
 
-[Freeplane](https://www.freeplane.org) is a widely used mindmapping application used for notetaking, brainstorming, planning and similar tasks. Its file format (usual ending `.mm`) is a dialect of the [Freemind](http://freemind.sourceforge.net) XML format. Often though, one might want to continue to use your mindmap as Markdown document, e.g. to
+[Freeplane](https://www.freeplane.org) is a widely used mind mapping application used for notetaking, brainstorming, planning and similar tasks. Its file format (usual ending `.mm`) is a dialect of the [Freemind](http://freemind.sourceforge.net) XML format. Often though, one might want to continue to use your mind map as Markdown document, e.g. to
 
 - use the content in tools accepting Markdown (e.g. GitHub, issue tracker, Wikis, etc.),
 - edit it on mobile devices,
@@ -30,22 +30,24 @@ There are already different scripts and plugins exporting or converting towards 
 
 ## Usage
 
-`freeplane2md.py [options] <mindmap> <markdownfile>`
+`freeplane2md.py [options] <mindmap>`
 
 or depending on your python installation
 
-`python freeplane2md.py [options] <mindmap> <markdownfile>`
+`python freeplane2md.py [options] <mindmap>`
 
 ### Arguments
 
-- `<mindmap>`   Mindmap file to be converted, usually with ending .mm
-- `<markdownfile>`  Markdownfile to be written. Use "-" for stdout.
+- `<mindmap>`   Mind map file to be converted, usually with ending .mm. The output path name becomes the input path name with
+    '.mm' replaced with '.md', unless explicitly given with --output.
 
 ### Options
 
     -h --help                   Show help.
     -V --version                Show version.
     -v --verbose                Output additional information to stderr.
+    -o --output=<markdownfile>  Specify Markdown-file to be written to.
+                                "-o -" writes to stdout.
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
     -t --todo                   Treat as to-do list. Translate non header
@@ -57,7 +59,7 @@ See also `freeplane2md.py -h`
 
 ## Examples
 
-Several examples can be found in the folder [test/](test/). E.g. the mindmap [test.mm](test/test.mm) shows most supported features and is converted to [test.md](test/test.md), if no options are set.
+Several examples can be found in the folder [test/](test/). E.g. the mind map [test.mm](test/test.mm) shows most supported features and is converted to [test.md](test/test.md), if no options are set.
 
 ## Installation
 
