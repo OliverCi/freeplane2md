@@ -1,4 +1,11 @@
-"""Automated tests for freeplane2md"""
+"""Automated tests for freeplane2md
+
+License:
+    Copyright (c) 2021 Oliver Ciupke, oliver.ciupke@gmail.com
+    SPDX-License-Identifier: LGPL-2.1-or-later
+    Licensed under the terms of GNU Lesser General Public License v2.1 or later,
+    see http://www.gnu.org/licenses/
+"""
 
 import unittest
 import pytest

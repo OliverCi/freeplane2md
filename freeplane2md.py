@@ -5,7 +5,9 @@ freeplane2md.py - Convert Freeplane mind maps into Markdown format
 
 License:
     Copyright (c) 2021 Oliver Ciupke, oliver.ciupke@gmail.com
-    Licensed under the terms of GPLv3, see http://www.gnu.org/licenses/
+    SPDX-License-Identifier: LGPL-2.1-or-later
+    Licensed under the terms of GNU Lesser General Public License v2.1 or later,
+    see http://www.gnu.org/licenses/
 
 Usage:
     freeplane2md.py [options] <mindmap>
