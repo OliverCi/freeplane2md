@@ -82,4 +82,3 @@ freeplane2md can as well be used from other scripts by importing as a module and
 - Better solution for HTML handling, where it interferes with indentation and nesting of consecutive paragraphs.
 - Provide more examples and automated tests.
 - Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
-- Easier installation.
