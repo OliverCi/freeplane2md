@@ -280,10 +280,8 @@ def connection_sources(tree):
     Collect all connection sources (IDs contained in 'DESTINATION' atribute
     within the target of a connection the IDs) for later insertion of links
     """
-    result = set()
-    for arrowlink in tree.iter('arrowlink'):
-        result.add(arrowlink.attrib['DESTINATION'])
-    return result
+    return {arrowlink.attrib['DESTINATION']
+            for arrowlink in tree.iter('arrowlink')}
 
 
 def link_targets(tree):
@@ -291,11 +289,8 @@ def link_targets(tree):
 
     Collect all link targets for later insertion of custom-ids
     """
-    result = set()
-    for node in tree.iter('node'):
-        if node.attrib.get('LINK'):
-            result.add(node.attrib.get('LINK'))
-    return result
+    return {node.attrib.get('LINK') for node in tree.iter('node')
+            if node.attrib.get('LINK')}
 
 
 if __name__ == '__main__':
