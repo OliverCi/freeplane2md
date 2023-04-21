@@ -48,6 +48,11 @@ or depending on your python installation
     -v --verbose                Output additional information to stderr.
     -o --output=<markdownfile>  Specify Markdown-file to be written to.
                                 "-o -" writes to stdout.
+    -n --no-clobber             Do not overwrite target file, if it already
+                                exists. (Overwritten by -f) 
+    -f --force                  Force overwriting target file.         
+    --no-timestamp              Omit HTML comment with timestamp, which is
+                                otherwise used to prevent eroneous overwrites.  
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
     -t --todo                   Treat as to-do list. Translate non header
@@ -67,6 +72,7 @@ The script requires Python 3 and the following packages need to be installed (e.
 
 - [docopt](https://pypi.org/project/docopt/)
 - [validators](https://pypi.org/project/validators/)
+- [python-dateutil](https://pypi.org/project/python-dateutil/)
 
 Running the automated tests requires
 [pytest](https://pypi.org/project/pytest/).
