@@ -143,7 +143,7 @@ def find_timestamp_comment(markdown_path):
     with open(markdown_path, 'r') as markdown_file:
         for line in markdown_file.readlines():
             if re.match("<!-- freeplane2md:", line):
-                datestring = re.search("(\d{4}-\d{2}-\d{2}T[\d:\.]+)\s*-->", line).group(1)
+                datestring = re.search(r"(\d{4}-\d{2}-\d{2}T[\d:\.]+)\s*-->", line).group(1)
                 return dateutil.parser.parse(datestring)
     return None
 
@@ -296,8 +296,8 @@ def map_richcontent(node):
         # (strip and splitlines take care of OS line break differences)
         html = "".join([s for s in html.strip().splitlines(True) if s.strip()])
         # Remove surrounding body tags
-        html = re.sub("^\s*<body>", "", html)
-        html = re.sub("</body>\s*$", "", html)
+        html = re.sub(r"^\s*<body>", "", html)
+        html = re.sub(r"</body>\s*$", "", html)
         # Exactly one empty line before and after HTML block
         html = "\n\n" + html.strip() + "\n"
     return html
