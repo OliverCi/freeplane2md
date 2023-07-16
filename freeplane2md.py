@@ -189,7 +189,7 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False,
     root = tree.getroot()
 
     # Handle docopt limitation, if file shall default to stdout  
-    with open(markdown_path, 'w') if markdown_path != '-' else stdout as markdown_file:
+    with open(markdown_path, 'w', encoding='UTF-8') if markdown_path != '-' else stdout as markdown_file:
 
         for root_node in root.findall('node'):
 

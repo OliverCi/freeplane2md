@@ -50,19 +50,19 @@
     - 
 
 <p>
-      Freeplane is meant to facilitate thinking, sharing information and getting things done at work, in school and at home. The software supports creating, sharing and using <a href="https://www.freeplane.org/wiki/index.php/Tutorial_Freeplane#What_is_mind_mapping">mind maps</a>, which are a kind of <a href="http://www.informationtamers.com/WikIT/index.php?title=Information_map_types">information maps</a>. The <a href="https://www.freeplane.org/wiki/index.php/Tutorial_Freeplane">Wiki Tutorial Freeplane</a> contains concrete examples of  <a href="freeplaneApplications.mm">application areas.</a>
+      Freeplane is meant to facilitate thinking, sharing information and getting things done at work, in school and at home. The software supports creating, sharing and using <a href="https://www.freeplane.org/wiki/index.php/Tutorial_Freeplane#What_is_mind_mapping">mind maps</a>, which are a kind ofÂ <a href="http://www.informationtamers.com/WikIT/index.php?title=Information_map_types">information maps</a>. TheÂ <a href="https://www.freeplane.org/wiki/index.php/Tutorial_Freeplane">Wiki Tutorial Freeplane</a>Â contains concrete examples ofÂ  <a href="freeplaneApplications.mm">application areas.</a>
     </p>
     <p>
     </p>
     <p>
-      The goal of this Tutorial is to describe the most used functions of Freeplane in a simple and systematic way. For more and more detailed information, see the documentation at <a href="freeplane.mm">Help &gt; Documentation</a>.
+      The goal of this TutorialÂ is to describe the most used functions of Freeplane in a simple and systematic way. For more and more detailed information, see the documentation at <a href="freeplane.mm">Help &gt; Documentation</a>.
     </p>
 
   - Reading guide
     - 
 
 <p>
-      It is a general practice that people don't like reading manuals. Therefore you only need to read the introduction of this<i> Tutorial</i> to be ready to start mind mapping using the Freeplan main menu bar. The main editing functions are to be found in <i>menu Edit</i>. And some very special functions are to be found in <i>menu Tools</i>.
+      It is a general practice that people don't like reading manuals. Therefore you only need to read the introduction of this<i>Â Tutorial</i>Â to be ready to start mind mapping using the Freeplan main menu bar. The main editing functions are to be found in <i>menu Edit</i>. And some very special functions are to be found in <i>menu Tools</i>.
     </p>
     <p>
     </p>
@@ -71,23 +71,23 @@
     </p>
     <ol>
       <li>
-        <b>Beginner</b> (lighter-blue/green): You learn basic elements which could be used for simple but productive tasks like taking notes and brainstorming.
+        <b>Beginner</b>Â (lighter-blue/green): You learn basic elements which could be used for simple but productive tasks like taking notes and brainstorming.
       </li>
       <li>
-        <b>Advanced</b> (yellow): You learn additional elements which could be used for better  organizing information and better communicating meaning.
+        <b>Advanced</b>Â (yellow): You learn additional elements which could be used for betterÂ Â organizingÂ information and better communicating meaning.
       </li>
       <li>
-        <b>Professional</b> (orange/brown): You learn about setting preferences and using production and technical tools.
+        <b>Professional</b>Â (orange/brown): You learn about setting preferences and using production and technical tools.
       </li>
     </ol>
     <p>
-      <b><font color="#ff0000">IMPORTANT</font></b><font color="#ff0000"> </font>
+      <b><font color="#ff0000">IMPORTANT</font></b><font color="#ff0000">Â </font>
     </p>
     <p>
-      <font color="#ff0000">Check <a href="https://www.freeplane.org/wiki/index.php/Add-ons_%28Language_pack%29">here</a> if there exists a language pack add-on for your language. </font>
+      <font color="#ff0000">Check <a href="https://www.freeplane.org/wiki/index.php/Add-ons_%28Language_pack%29">here</a>Â if there exists a language pack add-on for your language. </font>
     </p>
     <p>
-      <font color="#ff0000">Check <i>Help &gt; Documentation Maps Online</i> if video guides are available.</font>
+      <font color="#ff0000">Check <i>Help &gt; Documentation Maps Online</i>Â if video guides are available.</font>
     </p>
 
   - Main menu's
@@ -111,7 +111,7 @@ Tool panel {#724121688} [#724121688](#724121688)
     - Help > Key reference
 
 <p>
-      <i>Shot cuts</i> or <i>hot keys </i>for most functions.
+      <i>Shot cuts</i>Â or <i>hot keys </i>for most functions.
     </p>
 
       - Hot keys table
@@ -119,7 +119,7 @@ Tool panel {#724121688} [#724121688](#724121688)
     - 
 
 <p>
-      A mind map is a plane consisting of so called <b>nodes</b> which can display information. In a sense, a node is comparable to a <b>paragraph</b> of a book which can display text, images and other types of information. The difference being that nodes can be moved around and be hidden more easily. This makes maps more versatile in situations where information is being developed or information must be displayed selectively, depending on the users need.
+      A mind map is a plane consisting of so called <b>nodes</b>Â which can display information. In a sense, a node is comparable to a <b>paragraph</b>Â of a book which can display text, images and other types of information. The difference being that nodes can be moved around and be hidden more easily. This makes maps more versatile in situations where information is being developed or information must be displayed selectively, depending on the users need.
     </p>
     <p>
     </p>
@@ -131,7 +131,7 @@ Tool panel {#724121688} [#724121688](#724121688)
     - 
 
 <p>
-      All nodes are connected through lines called <b>edges.</b> The line you see at the left is an
+      All nodes are connected through lines called <b>edges.</b>Â The line you see at the left is an
     </p>
     <p>
       edge. Aseries of connected nodes are similar to branches of a <b>tree</b>. All trees begin in
@@ -140,10 +140,10 @@ Tool panel {#724121688} [#724121688](#724121688)
       the root node. Together these branches form a family descendancy. Nodes closer to
     </p>
     <p>
-      the root are called (grand)<b>parents</b> of nodes further away called (grand)<b>children</b>.
+      the root are called (grand)<b>parents</b>Â of nodes further away called (grand)<b>children</b>.
     </p>
     <p>
-      Nodes which ar at the same level, but not mutually connected, are called  <b>siblings</b>.
+      Nodes which ar at the same level, but not mutually connected, are calledÂ  <b>siblings</b>.
     </p>
     <p>
     </p>
@@ -151,7 +151,7 @@ Tool panel {#724121688} [#724121688](#724121688)
       As a rule a node's position is rescricted by its position in the family tree. The exception
     </p>
     <p>
-      to this rule is the so-called<b> free node</b>  which can be positioned independently of all other
+      to this rule is the so-called<b>Â free node</b>Â Â which can be positioned independently of all other
     </p>
     <p>
       nodes.
@@ -163,12 +163,12 @@ Tool panel {#724121688} [#724121688](#724121688)
     - 
 
 <p>
-      Generally, you can <b>fold</b> and <b>unfold</b> a node by clicking the node when the circle with plus or minus sign is showing. This circle appears when the cursor is above the node core.  Folding will hide possible children. If a node is folded, it shows a small <b>circle</b> at its <b>child side</b>. Unfolding will reveal hidden children.
+      Generally, you can <b>fold</b>Â and <b>unfold</b>Â a node by clicking the node when the circle with plus or minus sign is showing. This circle appears when the cursor is above the node core.Â Â Folding will hide possible children. If a node is folded, it shows a small <b>circle</b>Â at its <b>child side</b>.Â Unfolding will reveal hidden children.
     </p>
     <p>
     </p>
     <p>
-      If you have me unfolded, to my right you see 4 icons wich also are displayed in the toolbar at the top of the screen. These are icon-buttons with which you can fold/unfold the descendants of a selected node. Right-clicking the folding circle will reveal a context menu with the same icon-buttons for fast access.<br><br>Now click on node <i>Introduction</i>  to hide its children  and notice the circle!  And thereafter, click again to continue reading the following node.
+      If you have me unfolded, to my right you see 4 icons wich also are displayed in the toolbar at the top of the screen. These are icon-buttons with which you can fold/unfold the descendants of a selected node. Right-clicking the folding circle will reveal a context menu with the same icon-buttons for fast access.<br><br>Now click on node <i>Introduction</i>Â Â to hide its children Â and notice the circle!Â Â And thereafter, click again to continue reading the following node.
     </p>
     <p>
     </p>
@@ -182,7 +182,7 @@ Tool panel {#724121688} [#724121688](#724121688)
         </p>
       </li>
       <li>
-        It is possible to keep a node from folding by setting <i>Edit &gt; Node Group &gt; Always unfolded node (set/unset)</i>. This can be useful in cloud groups.
+        It is possible to keep a node from folding by settingÂ <i>Edit &gt; Node Group &gt; Always unfolded node (set/unset)</i>. This can be useful in cloud groups.
       </li>
       <li>
         If a node being folded has a connector to one of its hidden children. a line (and possibly a label) is visible which can be right-clicked to open the context menu and jump to the connected node..
@@ -297,10 +297,10 @@ Tool panel {#724121688} [#724121688](#724121688)
     </p>
     <ul>
       <li>
-        menubar &gt; <font color="#ff0000">View</font> (mostly Toolbars or View settings)
+        menubar &gt; <font color="#ff0000">View</font>Â (mostly Toolbars or View settings)
       </li>
       <li>
-        right-click &gt; click element (right-click on <b><u><font color="#0000c0">blank</font></u></b>  spot in workspace, NOT on a node)
+        right-click &gt; click element (right-click on <b><u><font color="#0000c0">blank</font></u></b>Â  spot in workspace, NOT on a node)
       </li>
     </ul>
 
@@ -459,10 +459,10 @@ Tool panel {#724121688} [#724121688](#724121688)
     </p>
     <ul>
       <li>
-        menubar &gt; <font color="#ff0000">View</font> (mostly Toolbars or View settings)
+        menubar &gt; <font color="#ff0000">View</font>Â (mostly Toolbars or View settings)
       </li>
       <li>
-        right-click &gt; click element (right-click on <b><u><font color="#0000c0">blank</font></u></b>  spot in workspace, NOT on a node)
+        right-click &gt; click element (right-click on <b><u><font color="#0000c0">blank</font></u></b>Â  spot in workspace, NOT on a node)
       </li>
     </ul>
 
@@ -514,7 +514,7 @@ Tool panel {#724121688} [#724121688](#724121688)
             - 
 
 <p>
-      menubar  <font color="#ff0000">View &gt; Toolbars &gt; Toolbar</font>
+      menubarÂ Â <font color="#ff0000">View &gt; Toolbars &gt; Toolbar</font>
     </p>
 
             - On a clear spot (not on a node),
@@ -631,7 +631,7 @@ Tool panel {#724121688} [#724121688](#724121688)
                 - 
 
 <p>
-      Please consider letting Freeplane automatically alert developers when you experience errors.  menubar <font color="#ff0000">Tools &gt; Preferences &gt; Environment (tab) &gt; Automatic bug report (section) &gt; Policy (dropdown)</font>.  Set to either "Always send" or "Show report dialog".
+      Please consider letting Freeplane automatically alert developers when you experience errors.Â Â menubar <font color="#ff0000">Tools &gt; Preferences &gt; Environment (tab) &gt; Automatic bug report (section) &gt; Policy (dropdown)</font>.Â Â Set to either "Always send" or "Show report dialog".
     </p>
 
         - Scrollbars {#ID_511421073}
@@ -798,7 +798,7 @@ Tool panel {#724121688} [#724121688](#724121688)
                     - 
 
 <p>
-      press the key(s) you want to assign for this menu item.  <font color="#ff0000">Important</font>: do not press "Enter" or "Return" thinking that is the equivalent of the "OK" button.  You must <b><u>click the OK button</u></b> to complete your hotkey assignment.
+      press the key(s) you want to assign for this menu item.Â  <font color="#ff0000">Important</font>: do not press "Enter" or "Return" thinking that is the equivalent of the "OK" button.Â Â You must <b><u>click the OK button</u></b>Â to complete your hotkey assignment.
     </p>
 
           - Zoom to fit to page {#ID_1041694622}
@@ -902,7 +902,7 @@ Tool panel {#724121688} [#724121688](#724121688)
               - 
 
 <p>
-      Click on the map tab you want to copy, making it the current map.  Then access the menubar <font color="#ff0000">View &gt; New map view</font>.
+      Click on the map tab you want to copy, making it the current map.Â Â Then access the menubar <font color="#ff0000">View &gt; New map view</font>.
     </p>
 
               - A copy of the map is created to the right of the node you selected.

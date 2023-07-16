@@ -73,3 +73,9 @@
   - Source of multiple connections [#1349627846](#1349627846)
   - Target 1 {#1349627846}
   - Target 2 {#1349627846}
+
+## 8-bit characters
+
+- ä,ö,ü,ß
+- Ä,Ö,Ü
+- Übergrößengeschäft
