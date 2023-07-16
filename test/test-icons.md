@@ -33,6 +33,8 @@
     - - [?]
   - :paperclip: Update
     - :paperclip:
+  - :gear: Executable
+  - :film_strip: Video
   - [0%] [25%] [50%] [75%] [100%] Progress icons
     - Any emoji ?
     - - [25%] ... etc.

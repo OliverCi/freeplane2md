@@ -1,9 +1,9 @@
-<map version="freeplane 1.9.8">
+<map version="freeplane 1.9.13">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
 <node TEXT="Test Icons" FOLDED="false" ID="ID_696401721" CREATED="1610381621824" MODIFIED="1638302929269" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties fit_to_viewport="false" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
@@ -126,6 +126,12 @@
 <node TEXT="Update" ID="ID_1502740388" CREATED="1622648895892" MODIFIED="1637860309440">
 <icon BUILTIN="attach"/>
 <node TEXT=":paperclip:" ID="ID_1228884071" CREATED="1622648898387" MODIFIED="1638306765171"/>
+</node>
+<node TEXT="Executable" ID="ID_1337055545" CREATED="1682107604595" MODIFIED="1682107621226">
+<icon BUILTIN="executable"/>
+</node>
+<node TEXT="Video" ID="ID_169387599" CREATED="1682107585738" MODIFIED="1682107626164">
+<icon BUILTIN="video"/>
 </node>
 <node TEXT="Progress icons" ID="ID_1758172160" CREATED="1638096138775" MODIFIED="1638288472797">
 <icon BUILTIN="0%"/>

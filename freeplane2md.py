@@ -84,6 +84,7 @@ icon_mapping_shortcode = {'stop-sign': ':stop_sign:', 'info': ':information_sour
     , 'full-4': ':four:', 'full-5': ':five:', 'full-6': ':six:'
     , 'full-7': ':seven:', 'full-8': ':eight:', 'full-9': ':nine:'
     , 'revision': ':repeat:'
+    , 'executable': ':gear:', 'video': ':film_strip:'
     }
 # Icons with a name matching the emoji shortcode
 matching_icons = {'hourglass', 'calendar'}
