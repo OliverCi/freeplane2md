@@ -13,7 +13,7 @@ https://www.dendron.so/), [Foam](https://foambubble.github.io/foam/) or similar,
 
 Furthermore, Freeplane can this way be used as a more visual tool to create Markdown in the first place, e.g. when brainstorming with many people.
 
-There are already different scripts and plugins exporting or converting towards Markdown. Though, these are so far limited, as they mainly export all nodes as headers and also do not handle many Freeplane features, such as links and icons (e.g. <https://github.com/memoryblade/mm2md/blob/master/mm2md.py>, <https://github.com/gelso/freeplane2markdown>)
+There are already different scripts and plugins exporting or converting towards Markdown. However, these are so far very limited, as they mainly export all nodes as headers and also do not handle many Freeplane features, such as links and icons (e.g. <https://github.com/memoryblade/mm2md/blob/master/mm2md.py>, <https://github.com/gelso/freeplane2markdown>)
 
 ## Features
 
