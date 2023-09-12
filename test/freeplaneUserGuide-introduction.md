@@ -99,7 +99,7 @@
       - Icon bar {#1865250955} [#1865250955](#1865250955)
       - Properties Panel {#303482588} [#303482588](#303482588)
     - Background
-context menu
+      context menu
 
 <p>
       Right-click in free place of background
@@ -107,7 +107,7 @@ context menu
 
       - Background Context Menu {#1485150857} [#1485150857](#1485150857)
         - Open/close
-Tool panel {#724121688} [#724121688](#724121688)
+          Tool panel {#724121688} [#724121688](#724121688)
     - Help > Key reference
 
 <p>
