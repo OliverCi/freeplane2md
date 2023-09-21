@@ -66,7 +66,7 @@ def test_freeplaneUserGuide():
     with open('test/expected-freeplaneUserGuide-introduction.md') as expected, open('test/freeplaneUserGuide-introduction.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
-def test_nested_indentation():
+def test_multiline_indentation():
     """Test that nodes with multiline text follow indentations in Markdown"""
     freeplane2md.convert_file('test/test-multiline-indentation.mm', 'test/test-multiline-indentation.md', headerlevel=2, no_timestamp=True)
     with open('test/expected-multiline-indentation.md') as expected, open('test/test-multiline-indentation.md') as testee:

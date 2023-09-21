@@ -352,13 +352,16 @@ def link_targets(tree):
 
 def indent_multiline_text(text, level):
     # TODO: Apply same indentation follow to HTML rich content too
-    if text is None or text == "":
+    if text is None or text == '':
         return text
 
     lines = text.splitlines()
     result = lines[0]
     for line in lines[1:]:
-        result += '\n' + indent*(level) + line
+        result += '\n'
+        # Avoid padding an empty line with unnecessary leading whitespace
+        if line != '':
+            result += indent*(level) + line
 
     return result
 
