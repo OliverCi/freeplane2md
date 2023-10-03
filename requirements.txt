@@ -1,0 +1,4 @@
+docopt~=0.6
+pytest~=7.0
+python_dateutil~=2.0
+validators~=0.0
