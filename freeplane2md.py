@@ -231,7 +231,7 @@ def process_node(node, level, headerlevel=1, todo=False):
         markers = indent*(level-headerlevel-1) + bullet 
         ending = ''
 
-    yield ( markers + icons_md + map_links(node) + add_custom_ids(node)
+    yield ( markers + icons_md + map_links(node, level-headerlevel) + add_custom_ids(node)
         + map_richcontent(node) + ending )
 
     for child in node.findall('node'):
@@ -253,7 +253,7 @@ def map_icons(node):
     return icons_md
 
 
-def map_links(node):
+def map_links(node, level):
     """Augment node text with link, if present"""
     text = node.attrib.get('TEXT')
     link_str = node.attrib.get('LINK', "")
@@ -266,6 +266,9 @@ def map_links(node):
             text = link_str
         else:
             text = ""
+
+    text = indent_multiline_text(text, level)
+
     if link_str:
         # Simplify to automatic links for URLs or e-mail addresses and Wiki-links for Markdown files
         if text == link_str or text == link_str.replace("mailto:", ""):
@@ -345,6 +348,14 @@ def link_targets(tree):
     """
     return {node.attrib.get('LINK') for node in tree.iter('node')
             if node.attrib.get('LINK')}
+
+
+def indent_multiline_text(text, level):
+    # TODO: Apply same indentation follow to HTML rich content too
+    if text is None or text == '':
+        return text
+
+    return ('\n' + indent*level).join(text.splitlines())
 
 
 if __name__ == '__main__':
