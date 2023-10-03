@@ -77,6 +77,10 @@ The script requires Python 3 and the following packages need to be installed (e.
 Running the automated tests requires
 [pytest](https://pypi.org/project/pytest/).
 
+You can install the above packages using pip with the following command:
+
+`pip install -r requirements.txt`
+
 ## Usage as library
 
 freeplane2md can as well be used from other scripts by importing as a module and calling the function `convert_file`.
