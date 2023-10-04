@@ -73,7 +73,9 @@
 <edge COLOR="#ff0000"/>
 <node TEXT="Subnote 1&#xa;&#xa;text" ID="ID_1496921501" CREATED="1694545163556" MODIFIED="1694545461104">
 <node TEXT="Subsubnote 1&#xa;&#xa;text" ID="ID_167579473" CREATED="1694545163556" MODIFIED="1694545474688"/>
-<node TEXT="Subsubnote 2&#xa;&#xa;text" ID="ID_160635297" CREATED="1694545163556" MODIFIED="1694545480949"/>
+<node TEXT="Subsubnote 2&#xa;&#xa;text&#xa;&#xa;with more than&#xa;&#xa;one paragraph" ID="ID_160635297" CREATED="1694545163556" MODIFIED="1695062091073"/>
+<node TEXT="Subsubnote 3&#xa;&#xa;text wrapped over&#xa;several&#xa;lines" ID="ID_1565435869" CREATED="1695057875470" MODIFIED="1695062262928"/>
+<node TEXT="Subsubnote 4&#xa;```&#xa;subtext having&#xa;    indentations itself, e.g.&#xa;    when containing code&#xa;```" ID="ID_795009118" CREATED="1695057823969" MODIFIED="1695062331029"/>
 </node>
 </node>
 </node>
