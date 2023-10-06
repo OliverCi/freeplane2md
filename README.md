@@ -68,18 +68,16 @@ Several examples can be found in the folder [test/](test/). E.g. the mind map [t
 
 ## Installation
 
-The script requires Python 3 and the following packages need to be installed (e.g using pip):
+The script requires Python 3 and the following packages need to be installed:
 
 - [docopt](https://pypi.org/project/docopt/)
 - [validators](https://pypi.org/project/validators/)
 - [python-dateutil](https://pypi.org/project/python-dateutil/)
+- [pytest](https://pypi.org/project/pytest/) (if you want to run the automated tests)
 
-Running the automated tests requires
-[pytest](https://pypi.org/project/pytest/).
+The above packages can be installed with pip individually or all at once with:
 
-You can install the above packages using pip with the following command:
-
-`pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 ## Usage as library
 

@@ -109,7 +109,7 @@ icon_mapping.update(icon_mapping_shortcode)
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.9')
+    args = docopt(__doc__, version='freeplane2md 0.9.2')
 
     if args['--verbose']:
         print(args, file=stderr)
