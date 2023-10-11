@@ -90,7 +90,7 @@ icon_mapping_shortcode = {'stop-sign': ':stop_sign:', 'info': ':information_sour
 matching_icons = {'hourglass', 'calendar'}
 # Wrap colons ':' around for mapping
 icon_mapping_matching = {key:(':'+key+':') for key in matching_icons}
-# TODO: Or directly define (redundand) dictionary?
+# TODO: Or directly define (redundant) dictionary?
 # Map task related icons to extended task syntax for Markdown
 icon_mapping_todo = {'button_ok': '[x]'}
 icon_mapping_extended_tasks = {'stop-sign': '[s]', 'info': '[i]'
@@ -100,12 +100,10 @@ icon_mapping_extended_tasks = {'stop-sign': '[s]', 'info': '[i]'
     , 'button_cancel': '[/]'
     }
 
-# TODO: Combine mappings according to options
 icon_mapping.update(icon_mapping_task)
 icon_mapping.update(icon_mapping_extended_tasks)
 icon_mapping.update(icon_mapping_matching)
 icon_mapping.update(icon_mapping_shortcode)
-# TODO: Remaining icons
 
 
 def main():
@@ -126,7 +124,7 @@ def get_markdown_path(args):
     """Determine output filename(s) from input filename(s)
 
     Output path/filename is the input path/filename with '.mm' replaced with
-    '.md', unless explicitely given with --output.
+    '.md', unless explicitly given with --output.
     """
     # Check if outputfile was specified
     if args['--output']:
@@ -177,7 +175,7 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False,
     globals:
     all_connections -- set of node IDs, which are connection sources
     all_links -- set of node IDs, which are link targets
-    ending -- remember ending of the last line to avoid redundand empty lines
+    ending -- remember ending of the last line to avoid redundant empty lines
     """
     global all_connections, all_links, ending
 
@@ -255,36 +253,32 @@ def map_icons(node):
 
 def map_links(node):
     """Augment node text with link, if present"""
-    text = node.attrib.get('TEXT')
-    link_str = node.attrib.get('LINK', "")
-    # TODO: Distinguish none or empty text?
-    if text is None:
-        print("Node without TEXT attribute: ", node.attrib.get('ID'), file=stderr)
-    if not text:
-        # Use link as text to allow for clickable links
-        if link_str:
-            text = link_str
-        else:
-            text = ""
 
-    if link_str:
-        # Simplify to automatic links for URLs or e-mail addresses and Wiki-links for Markdown files
-        if text == link_str or text == link_str.replace("mailto:", ""):
-            # TODO: Validate for mailto: prefix and simplify
-            if validators.url(link_str) or validators.email(link_str) or validators.email(link_str.replace("mailto:", "")):
-                # Automatic link
-                text = '<' + link_str + '>'
-            elif os.path.splitext(link_str)[1] in wikilink_targets:
-                # WikiLink, if target is Markdown file
-                text = '[[' + os.path.splitext(link_str)[0] + ']]'
-            else:
-                # Normal Markdown link
-                text = '[' + text + '](' + link_str + ')'
-        else:
-            # TODO: Turn around to simplify?
-            # Normal Markdown link
-            text = '[' + text + '](' + link_str + ')'
-    return text
+    if 'TEXT' not in node.attrib.keys():
+        # TODO: Only if verbose?
+        print("Node without TEXT attribute: ", node.attrib.get('ID'), file=stderr)
+    link_str = node.attrib.get('LINK', "")
+
+    # To allow clickable links, use link as text if empty
+    text = node.attrib.get('TEXT') or link_str
+    
+    if not link_str:
+        return text
+
+    # Normal Markdown link, of no simplification applies
+    if text != link_str and text != link_str.replace("mailto:", ""):
+        return f'[{text}]({link_str})'
+
+    # Simplify to automatic links for URLs or e-mail addresses
+    if validators.url(link_str) or validators.email(link_str) or validators.email(link_str.replace("mailto:", "")):
+        return f'<{link_str}>'
+
+    # WikiLink, if target is Markdown file
+    if os.path.splitext(link_str)[1] in wikilink_targets:
+        return f'[[{os.path.splitext(link_str)[0]}]]'
+
+    # Normal Markdown link for all other cases
+    return f'[{text}]({link_str})'
 
 
 def map_richcontent(node):
@@ -349,10 +343,8 @@ def link_targets(tree):
 
 
 def indent_multiline_text(text, level):
+    """Ensure correct indentation of nodes with multiline text"""
     # TODO: Apply same indentation follow to HTML rich content too
-    # if text is None or text == '':
-    #     return text
-    # return ('\n' + indent*level).join(text.splitlines()) if text else text
     return ('\n' + indent*level).join(text.splitlines())
 
 
