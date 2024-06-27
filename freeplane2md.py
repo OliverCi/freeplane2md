@@ -19,10 +19,10 @@ Description:
     '.mm' replaced with '.md', unless explicitly given with --output. By
     default, the root node becomes the title (header 1), other nodes become
     list items with the appropriate nesting level. Converting further levels
-    of subnotes to headers can be configured using the option --headerlevel
+    of subnodes to headers can be configured using the option --headerlevel
     or -l.
 
-    Freeplane icons are translated to their correspoding Markdown
+    Freeplane icons are translated to their corresponding Markdown
     representation or emoji shortcodes, if one exists. 
 
     Links to URLs and external files are converted to Markdown links. Links to
@@ -46,7 +46,7 @@ Options:
                                 exists. (Overwritten by -f) 
     -f --force                  Force overwriting target file.         
     --no-timestamp              Omit HTML comment with timestamp, which is
-                                otherwise used to prevent eroneous overwrites.  
+                                otherwise used to prevent erroneous overwrites.  
     -l --headerlevel=<level>    Number of levels to be converted to
                                 headers [default: 1] 
     -t --todo                   Treat as to-do list. Translate non header
@@ -80,14 +80,16 @@ icon_mapping_shortcode = {'stop-sign': ':stop_sign:', 'info': ':information_sour
     , 'button_ok': ':heavy_check_mark:', 'button_cancel': ':heavy_multiplication_x:'
     , 'yes': ':exclamation:', 'help': ':question:'
     , 'attach': ':paperclip:', 'clanbomber': ':bomb:'
+    , 'kaddressbook': ':telephone_receiver:'
     , 'full-1': ':one:', 'full-2': ':two:', 'full-3': ':three:'
     , 'full-4': ':four:', 'full-5': ':five:', 'full-6': ':six:'
     , 'full-7': ':seven:', 'full-8': ':eight:', 'full-9': ':nine:'
     , 'revision': ':repeat:'
     , 'executable': ':gear:', 'video': ':film_strip:'
+    , 'idea': ':bulb:', 'stop': ':red_circle:', 'prepare': ':yellow_circle:', 'go': ':green_circle:'
     }
 # Icons with a name matching the emoji shortcode
-matching_icons = {'hourglass', 'calendar'}
+matching_icons = {'hourglass', 'calendar', 'bee', ':telephone_receiver:', ':pencil:'}
 # Wrap colons ':' around for mapping
 icon_mapping_matching = {key:(':'+key+':') for key in matching_icons}
 # TODO: Or directly define (redundant) dictionary?
@@ -107,7 +109,7 @@ icon_mapping.update(icon_mapping_shortcode)
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.9.2')
+    args = docopt(__doc__, version='freeplane2md 0.10.0dev')
 
     if args['--verbose']:
         print(args, file=stderr)
@@ -126,7 +128,7 @@ def get_markdown_path(args):
     Output path/filename is the input path/filename with '.mm' replaced with
     '.md', unless explicitly given with --output.
     """
-    # Check if outputfile was specified
+    # Check if output file was specified
     if args['--output']:
         return args['--output']
     else:
@@ -148,7 +150,7 @@ def find_timestamp_comment(markdown_path):
 
 def check_overwrite(args, markdown_path):
     """Check for erroneous overwrites"""
-    # If markdownfile exists and is not stdout
+    # If Markdown-file exists and is not stdout
     if os.path.isfile(markdown_path) and not args['--force']:
         if args['--no-clobber']:
             # No overwrite in any case
@@ -302,7 +304,7 @@ def add_custom_ids(node):
     """Custom IDs for connections, link targets or links within document"""
     result = ""
     # Add {#custom-id} if node is connection target
-    # (Explicitely compare to None due to oddity of etree)
+    # (Explicitly compare to None due to oddity of etree)
     if node.find('arrowlink') is not None:
         destination_str = node.find('arrowlink').attrib.get('DESTINATION')
         # Append {#custom-id} 
@@ -326,7 +328,7 @@ def add_custom_ids(node):
 def connection_sources(tree):
     """Connection sources within the tree
 
-    Collect all connection sources (IDs contained in 'DESTINATION' atribute
+    Collect all connection sources (IDs contained in 'DESTINATION' attribute
     within the target of a connection the IDs) for later insertion of links
     """
     return {arrowlink.attrib['DESTINATION']

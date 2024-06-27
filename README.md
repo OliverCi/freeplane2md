@@ -17,9 +17,9 @@ There are already different scripts and plugins exporting or converting towards 
 
 ## Features
 
-- Provides a command line interface and a scriptable function to convert Freeplane files into to Markdown.
+- Provides a command line interface and a scriptable function to convert Freeplane files to Markdown.
 - Freeplane nodes are converted to Markdown headers down to a configurable level and to list items below that level.
-- Frequently used icons are converted to emojis (currently in shortcode syntax), as understood by most Markdown tools.
+- Frequently used icons are converted to emojis using shortcode syntax as understood by most Markdown tools.
 - Freeplane links are converted to Markdown links.
   - Links to URLs or E-Mail addresses are converted to automatic links.
   - For local links within the document, custom IDs are generated from the Freeplane node IDs.
@@ -85,8 +85,8 @@ freeplane2md can as well be used from other scripts by importing as a module and
 
 ## Planned improvements
 
-- Support further icons and option to convert emoji icons to UTF-8 representation.
-- Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping in the same node.
-- Better solution for HTML handling, where it interferes with indentation and nesting of consecutive paragraphs.
-- Provide more examples and automated tests.
 - Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
+- Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping within the same node.
+- Better HTML handling, when interfering with indentation and nesting of consecutive paragraphs.
+- Provide more examples.
+- Easier installation.

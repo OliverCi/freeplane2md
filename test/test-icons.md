@@ -43,6 +43,6 @@
   - :very_negative: :negative: :neutral: :positive: :very_positive: Rating
     - Any similar emojies?
     - (--), (-), 0, (+), (++)
-  - :idea: :bomb: :pencil: :stop: :prepare: :go: 
+  - :bulb: :bomb: :pencil: :red_circle: :yellow_circle: :green_circle: :telephone_receiver: 
     - :bomb:
     - other?

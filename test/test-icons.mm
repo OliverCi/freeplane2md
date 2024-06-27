@@ -1,4 +1,4 @@
-<map version="freeplane 1.9.13">
+<map version="freeplane 1.11.5">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
 <node TEXT="Test Icons" FOLDED="false" ID="ID_696401721" CREATED="1610381621824" MODIFIED="1638302929269" STYLE="oval">
 <font SIZE="18"/>
@@ -8,11 +8,11 @@
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
 <font SIZE="24"/>
-<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="bottom_or_right" STYLE="bubble">
 <stylenode LOCALIZED_TEXT="default" ID="ID_271890427" ICON_SIZE="12 pt" COLOR="#000000" STYLE="fork">
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" DASH="" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_271890427" STARTARROW="DEFAULT" ENDARROW="NONE"/>
 <font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
-<richcontent CONTENT-TYPE="plain/auto" TYPE="DETAILS"/>
+<richcontent TYPE="DETAILS" CONTENT-TYPE="plain/auto"/>
 <richcontent TYPE="NOTE" CONTENT-TYPE="plain/auto"/>
 </stylenode>
 <stylenode LOCALIZED_TEXT="defaultstyle.details"/>
@@ -26,7 +26,7 @@
 </stylenode>
 <stylenode LOCALIZED_TEXT="defaultstyle.selection" BACKGROUND_COLOR="#4e85f8" BORDER_COLOR_LIKE_EDGE="false" BORDER_COLOR="#4e85f8"/>
 </stylenode>
-<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="bottom_or_right" STYLE="bubble">
 <stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork">
 <font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
 </stylenode>
@@ -41,7 +41,7 @@
 <arrowlink COLOR="#003399" TRANSPARENCY="255" DESTINATION="ID_67550811"/>
 </stylenode>
 </stylenode>
-<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="bottom_or_right" STYLE="bubble">
 <stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="oval" SHAPE_HORIZONTAL_MARGIN="10 pt" SHAPE_VERTICAL_MARGIN="10 pt">
 <font SIZE="18"/>
 </stylenode>
@@ -69,7 +69,7 @@
 </map_styles>
 </hook>
 <hook NAME="AutomaticEdgeColor" COUNTER="1" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="Some icons from Freeplane together with possible translations for testing." POSITION="right" ID="ID_1439092392" CREATED="1638287639909" MODIFIED="1640450201062">
+<node TEXT="Some icons from Freeplane together with possible translations for testing." POSITION="bottom_or_right" ID="ID_1439092392" CREATED="1638287639909" MODIFIED="1640450201062">
 <edge COLOR="#ff0000"/>
 <node TEXT="ToDo" ID="ID_705688669" CREATED="1622648859404" MODIFIED="1637860350803">
 <icon BUILTIN="unchecked"/>
@@ -157,13 +157,14 @@
 <node TEXT="Any similar emojies?" ID="ID_1926723509" CREATED="1638288555079" MODIFIED="1640450470760"/>
 <node TEXT="(--), (-), 0, (+), (++)" ID="ID_852159437" CREATED="1638306935866" MODIFIED="1640450502445"/>
 </node>
-<node TEXT="" ID="ID_61592762" CREATED="1622648881183" MODIFIED="1640450528416">
+<node TEXT="" ID="ID_61592762" CREATED="1622648881183" MODIFIED="1719257566162">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="clanbomber"/>
 <icon BUILTIN="pencil"/>
 <icon BUILTIN="stop"/>
 <icon BUILTIN="prepare"/>
 <icon BUILTIN="go"/>
+<icon BUILTIN="kaddressbook"/>
 <node TEXT=":bomb:" ID="ID_1179106390" CREATED="1640450518221" MODIFIED="1640450518221"/>
 <node TEXT="other?" ID="ID_704247196" CREATED="1640450531488" MODIFIED="1640450531488"/>
 </node>

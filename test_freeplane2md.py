@@ -59,7 +59,7 @@ def test_todo_list():
         assert(expected.readlines() == testee.readlines())
 
 def test_freeplaneUserGuide():
-    """Test embedded HTML with Freeplane user guide Mind map
+    """Test embedded HTML with Freeplane user guide mind map
     (For automatic test only first chapter is taken)
     """
     freeplane2md.convert_file('test/freeplaneUserGuide-introduction.mm', 'test/freeplaneUserGuide-introduction.md', no_timestamp=True)
