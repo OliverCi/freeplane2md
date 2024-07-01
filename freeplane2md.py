@@ -214,7 +214,8 @@ def process_node(node, level, headerlevel=1, todo=False):
 
     global ending
 
-    icons_md = map_icons(node)
+    icons_mm = find_icons(node)
+    icons_md = map_icons(icons_mm)
 
     # Make configurable up to which level convert to header and from which to list item 
     if level <= headerlevel:
@@ -238,19 +239,15 @@ def process_node(node, level, headerlevel=1, todo=False):
         yield from process_node(child, level+1, headerlevel, todo)
 
 
-def map_icons(node):
-    """Markdown representation for icons in node"""
-    # String of one or more icons per node
-    icons_md = ""
-    for icon in node.findall('icon'):
-        icon_mm = icon.attrib['BUILTIN']
-        # Translate icons with configured dictionary
-        if icon_mm in icon_mapping:
-            icons_md += icon_mapping[icon_mm] + ' '
-        else:
-            # Default to use icon name as emoji shortcode
-            icons_md += ":" + icon_mm + ": "
-    return icons_md
+def find_icons(node):
+    """All icons in this node"""
+    return [icon.attrib['BUILTIN'] for icon in node.findall('icon')]
+
+
+def map_icons(icons_mm):
+    """String with Markdown representations for list of Freeplane icons"""
+    return ''.join([icon_mapping[icon_mm] + ' ' if icon_mm in icon_mapping
+                    else ":" + icon_mm + ": " for icon_mm in icons_mm ])
 
 
 def map_links(node):
