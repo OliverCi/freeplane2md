@@ -54,8 +54,26 @@ def test_edge_cases():
 
 def test_todo_list():
     """Treat mind map as to-do list as with --todo"""
-    freeplane2md.convert_file('test/test.mm', 'test/test-todo.md', todo=True, no_timestamp=True)
+    freeplane2md.convert_file('test/test.mm', 'test/test-todo.md', todo='todo', no_timestamp=True)
     with open('test/expected-todo.md') as expected, open('test/test-todo.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+def test_todo_misc():
+    """New behavior on --todo: Do not add checkboxes to list items, if
+    already higher level node was explicitly marked with (task) icon in
+    input mind map"""
+    freeplane2md.convert_file('test/test-todo-misc.mm', 'test/test-todo-misc.md', todo='todo', no_timestamp=True)
+    with open('test/expected-todo-misc.md') as expected, open('test/test-todo-misc.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+def test_todo_all():
+    """New behavior on --todo: Do not add checkboxes to list items, if
+    already higher level node was explicitly marked with (task) icon in
+    input mind map"""
+    freeplane2md.convert_file('test/test-todo-misc.mm', 'test/test-todo_all.md', todo='todo_all', no_timestamp=True)
+    with open('test/expected-todo_all.md') as expected, open('test/test-todo_all.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
         assert(expected.readlines() == testee.readlines())
 
 def test_freeplaneUserGuide():

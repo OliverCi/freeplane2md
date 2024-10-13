@@ -51,9 +51,14 @@ Options:
                                 headers [default: 1] 
     -t --todo                   Treat as to-do list. Translate non header
                                 nodes without icons to tasks with checkboxes
-                                (- [ ]) and nodes with checkmark icons to
-                                done tasks (- [x]).
-
+                                (- [ ]) and nodes with check mark icons to
+                                done tasks (- [x]). Do not add checkboxes to
+                                list items though, where already higher level
+                                node was explicitly marked with a task icon.
+    --todo_all                  Add checkboxes to all list items, even where
+                                already a higher level node was explicitly
+                                marked with (task) icon.
+                                
 """
 
 from docopt import docopt
@@ -107,6 +112,10 @@ icon_mapping.update(icon_mapping_extended_tasks)
 icon_mapping.update(icon_mapping_matching)
 icon_mapping.update(icon_mapping_shortcode)
 
+# Freeplane icons explicitly denoting the node to be a task
+# Used to determine, if subnodes shall have checkboxes added on --todo
+# TODO: List explicitly to be easier understandable
+task_icons = set(icon_mapping_task | icon_mapping_todo | icon_mapping_extended_tasks )
 
 def main():
     args = docopt(__doc__, version='freeplane2md 0.10.0dev')
@@ -114,11 +123,19 @@ def main():
     if args['--verbose']:
         print(args, file=stderr)
 
+    # --todo_all implies --todo
+    if args['--todo_all']:
+        todo = 'todo_all'
+    elif  args['--todo']:
+        todo = 'todo'
+    else:
+        todo = ''
+
     markdown_path = get_markdown_path(args)
     check_overwrite(args, markdown_path)
 
     convert_file(args['<mindmap>'], markdown_path,
-                 headerlevel=int(args['--headerlevel']), todo=args['--todo'],
+                 headerlevel=int(args['--headerlevel']), todo=todo,
                  no_timestamp=args['--no-timestamp']) 
 
 
@@ -170,7 +187,7 @@ def check_overwrite(args, markdown_path):
                     exit()
 
 
-def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False,
+def convert_file(freeplane_path, markdown_path, headerlevel=1, todo='',
                  no_timestamp=False):
     """Convert Freeplane freeplane_path to Markdown markdown_path
 
@@ -209,7 +226,7 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo=False,
                   f" -->", file=markdown_file)
 
 
-def process_node(node, level, headerlevel=1, todo=False):
+def process_node(node, level, headerlevel=1, todo=''):
     """Recursively process conversion of a single node and its subtree"""
 
     global ending
@@ -234,6 +251,12 @@ def process_node(node, level, headerlevel=1, todo=False):
 
     yield ( markers + icons_md + indent_multiline_text(map_links(node), level-headerlevel) + add_custom_ids(node)
         + map_richcontent(node) + ending )
+
+    # If this node already contained task icon in input mind map, do
+    # not convert child items to tasks
+    # - unless option --todo_all was set
+    if task_icons.intersection(icons_mm) and todo != 'todo_all':
+        todo = ''
 
     for child in node.findall('node'):
         yield from process_node(child, level+1, headerlevel, todo)
