@@ -20,6 +20,29 @@ def test_convert_file():
         assert(expected.readlines() == testee.readlines())
     # TODO: Check, if MD file was really created by this test, e.g. via the timestamp.
 
+# ---
+
+def test_main(monkeypatch):
+    """Test testing the CLI
+    Test by setting command line parameters and run main instead of inner function."""
+    monkeypatch.setattr('sys.argv', ['freeplane2md.py', 'test/test.mm', '--no-timestamp'])
+    freeplane2md.main()
+    with open('test/expected.md') as expected, open('test/test.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+def test_edge_cases_main(monkeypatch):
+    """Several edge-cases, such as empty nodes, overlapping links and
+    connectors etc.
+    """
+    monkeypatch.setattr('sys.argv',
+                        ['freeplane2md.py','test/test-edge-cases.mm',
+                         '--headerlevel=2', '--no-timestamp'])
+    freeplane2md.main()
+    with open('test/expected-edge-cases.md') as expected, open('test/test-edge-cases.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+# ---
+
 def test_headerlevel_2():
     """Testing option for different headerlevel"""
     freeplane2md.convert_file('test/test.mm', 'test/test-headerlevel2.md', headerlevel=2, no_timestamp=True)
@@ -74,6 +97,13 @@ def test_todo_all():
     with open('test/expected-todo_all.md') as expected, open('test/test-todo_all.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
+def test_todo_all_main(monkeypatch):
+    monkeypatch.setattr('sys.argv', ['freeplane2md.py', 'test/test-todo-misc.mm', '--todo_all', '--no-timestamp'])
+    """Classic behavior now on option --todo_all: Add checkboxes to all
+    list items, even if higher level node was already marked explicitly
+    with (task) icon in input mind map"""
+    freeplane2md.main()
+    with open('test/expected-todo_all.md') as expected, open('test/test-todo_all.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
 def test_freeplaneUserGuide():
