@@ -92,6 +92,25 @@ def test_multiline_indentation():
 
 # ---
 
+def test_multiple_conversions():
+    """Test multiple conversions in a row.
+    Provoking errors when state accidentally carried over ."""
+    # Converting with "todo" changes the context state
+    freeplane2md.convert_file('test/test.mm', 'test/test-todo.md', todo='todo', no_timestamp=True)
+    with open('test/expected-todo.md') as expected, open('test/test-todo.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+    """Icons to be tested"""
+    freeplane2md.convert_file('test/test-icons.mm', 'test/test-icons.md', no_timestamp=True)
+    with open('test/expected-icons.md') as expected, open('test/test-icons.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+    freeplane2md.convert_file('test/test.mm', 'test/test.md', no_timestamp=True)
+    with open('test/expected.md') as expected, open('test/test.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+# ---
+
 def test_get_markdown_path():
     """Test determining output filename"""
     # Path written out

@@ -76,7 +76,7 @@ Several examples can be found in the folder [test/](test/). For example, the min
 
 ## Installation
 
-freeplane2md requires Python 3 and the following packages need to be installed:
+freeplane2md requires Python 3.9 or higher, and the following packages need to be installed:
 
 - [docopt](https://pypi.org/project/docopt/)
 - [validators](https://pypi.org/project/validators/)

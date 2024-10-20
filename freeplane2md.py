@@ -78,7 +78,6 @@ indent = "  "
 wikilink_targets = {".md", ".markdown"}
 
 # Translation of icons
-icon_mapping = {}
 icon_mapping_task = {'checked': '[x]', 'unchecked': '[ ]'}
 # Icons with a name different from the matching emoji shortcode
 icon_mapping_shortcode = {'stop-sign': ':stop_sign:', 'info': ':information_source:'
@@ -107,15 +106,11 @@ icon_mapping_extended_tasks = {'stop-sign': '[s]', 'info': '[i]'
     , 'button_cancel': '[/]'
     }
 
-icon_mapping.update(icon_mapping_task)
-icon_mapping.update(icon_mapping_extended_tasks)
-icon_mapping.update(icon_mapping_matching)
-icon_mapping.update(icon_mapping_shortcode)
-
 # Freeplane icons explicitly denoting the node to be a task
 # Used to determine, if subnodes shall have checkboxes added on --todo
 # TODO: List explicitly to be easier understandable
 task_icons = set(icon_mapping_task | icon_mapping_todo | icon_mapping_extended_tasks )
+
 
 def main():
     args = docopt(__doc__, version='freeplane2md 0.10.0dev')
@@ -195,11 +190,13 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo='',
     all_connections -- set of node IDs, which are connection sources
     all_links -- set of node IDs, which are link targets
     ending -- remember ending of the last line to avoid redundant empty lines
+    icon_mapping -- map Freeplane icons to emojis
     """
-    global all_connections, all_links, ending
+    global all_connections, all_links, ending, icon_mapping
 
+    icon_mapping = icon_mapping_task | icon_mapping_extended_tasks | icon_mapping_matching | icon_mapping_shortcode
     if todo:
-        icon_mapping.update(icon_mapping_todo)
+        icon_mapping |= icon_mapping_todo
 
     ending = '\n'
     tree = ET.parse(freeplane_path)
