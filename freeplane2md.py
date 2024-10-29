@@ -155,7 +155,7 @@ def find_timestamp_comment(markdown_path):
     with open(markdown_path, 'r') as markdown_file:
         for line in markdown_file.readlines():
             if re.match("<!-- freeplane2md:", line):
-                datestring = re.search(r"(\d{4}-\d{2}-\d{2}T[\d:\.]+)\s*-->", line).group(1)
+                datestring = re.search(r"(\d{4}-\d{2}-\d{2}T[\d:\.\+]+)\s*-->", line).group(1)
                 return dateutil.parser.parse(datestring)
     return None
 
@@ -173,7 +173,7 @@ def check_overwrite(args, markdown_path):
             timestamp_comment = find_timestamp_comment(markdown_path)
             if timestamp_comment:
                 mtime = datetime.datetime.fromtimestamp(
-                    os.path.getmtime(markdown_path) )
+                    os.path.getmtime(markdown_path) ).astimezone()
                 if mtime - timestamp_comment > datetime.timedelta(seconds=2):
                     print(f"Target file \"{markdown_path}\" already exits and "
                           "appears to be edited after conversion. Specify a "
@@ -219,7 +219,7 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo='',
         # Append HTML comment so later runs can check for erroneous overwrites
         if not no_timestamp:
             print(f"<!-- freeplane2md: Converted from {freeplane_path} at "
-                  f"{datetime.datetime.now().isoformat(timespec='seconds')}"
+                  f"{datetime.datetime.now().astimezone().isoformat(timespec='seconds')}"
                   f" -->", file=markdown_file)
 
 

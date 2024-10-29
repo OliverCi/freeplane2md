@@ -29,6 +29,7 @@ There are already several scripts and plugins that export or convert to Markdown
 - Basic support for HTML embedded in nodes. (May disarray nesting of related nodes translated into consecutive paragraphs).
 - Command line interface
 - Scriptable function which can be used by other programs
+- When called as a program via CLI, it tries to detect accidental overwrites of targets, which have been edited after conversion. Can be overwritten with -f.
 
 ## Usage
 
