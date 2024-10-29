@@ -113,7 +113,7 @@ task_icons = set(icon_mapping_task | icon_mapping_todo | icon_mapping_extended_t
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.10.0dev')
+    args = docopt(__doc__, version='freeplane2md 0.10.1')
 
     if args['--verbose']:
         print(args, file=stderr)
@@ -303,7 +303,7 @@ def map_links(node):
 def map_richcontent(node):
     """Return HTML content of node as string usable within Markdown"""
     html = ""
-    if node.find('richcontent'):
+    if node.find('richcontent') is not None:
         html_body = node.find('richcontent').find('html').find('body')
         html = ET.tostring(html_body, method='html', encoding='unicode')
         # Remove empty or whitespace only lines inbetween
