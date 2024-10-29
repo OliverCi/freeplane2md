@@ -113,7 +113,7 @@ task_icons = set(icon_mapping_task | icon_mapping_todo | icon_mapping_extended_t
 
 
 def main():
-    args = docopt(__doc__, version='freeplane2md 0.10.1')
+    args = docopt(__doc__, version='freeplane2md 0.10.2')
 
     if args['--verbose']:
         print(args, file=stderr)

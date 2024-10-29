@@ -1,7 +1,7 @@
 - Test
   - Mind map as test input for freeplane2md
   - Created with Freeplane
-    - Freeplane version 1.9.12
+    - Freeplane version 1.12.6
   - Node
     - Subnote 1
       - Subsubnote

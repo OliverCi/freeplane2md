@@ -4,7 +4,7 @@
 
 ## Created with Freeplane
 
-### Freeplane version 1.9.12
+### Freeplane version 1.12.6
 
 ## Node
 

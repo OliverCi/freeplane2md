@@ -1,9 +1,10 @@
-<map version="freeplane 1.11.1">
+<map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
 <node TEXT="Test Edge Cases" FOLDED="false" ID="ID_696401721" CREATED="1610381621824" MODIFIED="1639427305465" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm" fit_to_viewport="false"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/standard-1.6.mm" fit_to_viewport="false" show_tags="UNDER_NODES"/>
+    <tags category_separator="::"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
@@ -12,10 +13,13 @@
 <stylenode LOCALIZED_TEXT="default" ID="ID_271890427" ICON_SIZE="12 pt" COLOR="#000000" STYLE="fork">
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" DASH="" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_271890427" STARTARROW="DEFAULT" ENDARROW="NONE"/>
 <font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
-<richcontent CONTENT-TYPE="plain/auto" TYPE="DETAILS"/>
+<richcontent TYPE="DETAILS" CONTENT-TYPE="plain/auto"/>
 <richcontent TYPE="NOTE" CONTENT-TYPE="plain/auto"/>
 </stylenode>
 <stylenode LOCALIZED_TEXT="defaultstyle.details"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.tags">
+<font SIZE="10"/>
+</stylenode>
 <stylenode LOCALIZED_TEXT="defaultstyle.attributes">
 <font SIZE="9"/>
 </stylenode>
@@ -74,7 +78,7 @@
 </node>
 <node TEXT="Created with Freeplane" POSITION="bottom_or_right" ID="ID_1849349514" CREATED="1636418324809" MODIFIED="1636418337011">
 <edge COLOR="#007c00"/>
-<node TEXT="Freeplane version 1.9.11" ID="ID_442386573" CREATED="1636418338818" MODIFIED="1638649652341"/>
+<node TEXT="Freeplane version 1.12.6" ID="ID_442386573" CREATED="1636418338818" MODIFIED="1730055664719"/>
 </node>
 <node TEXT="Deep nesting" POSITION="bottom_or_right" ID="ID_1460858956" CREATED="1636416925057" MODIFIED="1639426611963">
 <edge COLOR="#0000ff"/>
