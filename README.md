@@ -31,18 +31,69 @@ There are already several scripts and plugins that export or convert to Markdown
 - Scriptable function which can be used by other programs
 - When called as a program via CLI, it tries to detect accidental overwrites of targets, which have been edited after conversion. Can be overwritten with -f.
 
+## Example
+
+The following mind map ([example.mm](example.mm)) shows some of the features:
+
+![Example Mind Map](example.svg)
+
+ `freeplane2md.py -l2 example.mm` converts it to the following markdown file ([example.md](example.md)):
+
+    # freeplane2md
+    
+    ## Example showing some features
+    
+    ## Level 1 Node
+    
+    - Subnote 1
+      - Subsubnote
+        - Subsubsubnote
+    - Subnote 2
+    
+    ## Tasks
+    
+    - [ ] Task with checkbox
+    - [x] Done task
+    - Priorities
+      - :one: Priority 1
+      - :two: Priority 2
+      - :three: Priority 3
+    
+    ## Icons
+    
+    - :heavy_check_mark: Checked
+    - :heavy_multiplication_x: Crossed
+    - :hourglass: Waiting
+    - :stop_sign: On hold
+    - :repeat: Recurring / Review
+    - [ ] :two: Multiple icons
+    
+    ## Links and connections
+    
+    - Link to URL
+      - <https://www.freeplane.org/wiki/index.php/Home>
+    - Link to e-mail
+      - <mailto:example@example.com>
+    - Link to local Markdown file
+      - [[test-icons]]
+    - Connection to node [#470163758](#470163758)
+    - Target for connection {#470163758}
+    - [Local hyperlink](#ID_244066349)
+    - Target for hyperlink {#ID_244066349}
+    <!-- freeplane2md: Converted from example.mm at 2024-11-30T19:57:34+01:00 -->
+
 ## Usage
 
-`freeplane2md.py [options] <mindmap>`
+freeplane2md is a Python script that can be called in the usual ways. Depending on your Python installation and operating system, e.g.:
 
-or depending on your python installation
-
-`python freeplane2md.py [options] <mindmap>`
+    freeplane2md.py [options] <mindmap>
+    python freeplane2md.py [options] <mindmap>
+    py freeplane2md.py [options] <mindmap>
 
 ### Arguments
 
-- `<mindmap>`   Mind map file to be converted, usually with ending .mm. The output path name becomes the input path name with
-    '.mm' replaced with '.md', unless explicitly given with `--output`.
+- `<mindmap>`   Mind map file to be converted, usually with ending `.mm`. The output path name becomes the input path name with
+    `.mm` replaced with `.md`, unless explicitly given with `--output`.
 
 ### Options
 
@@ -71,9 +122,12 @@ or depending on your python installation
 
 See also `freeplane2md.py -h`
 
-## Examples
+## Usage as library
 
-Several examples can be found in the folder [test/](test/). For example, the mind map [test.mm](test/test.mm) shows most supported features and is converted to [test.md](test/test.md), if no options are set.
+freeplane2md can also be used from other scripts by importing it as a Python module and calling `convert_file()`, e.g.:
+
+    import freeplane2md
+    freeplane2md.convert_file('example.mm', 'example.md')
 
 ## Installation
 
@@ -88,14 +142,9 @@ The above packages can be installed individually with pip or all at once with:
 
     pip install -r requirements.txt
 
-## Usage as library
-
-freeplane2md can also be used from other scripts by importing it as a Python module and calling the function `convert_file()`.
-
 ## Planned improvements
 
+- Better HTML handling, when interfering with indentation and nesting of consecutive paragraphs.
 - Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
 - Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping within the same node.
-- Better HTML handling, when interfering with indentation and nesting of consecutive paragraphs.
-- Provide more examples.
 - Easier installation.
