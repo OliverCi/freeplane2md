@@ -154,3 +154,43 @@ def test_get_markdown_path():
     # Check, if single dot '.' confuses function
     assert(freeplane2md.get_markdown_path({'<mindmap>': "./local.mm", '--output': False}) == "./local.md" )
 
+# ---
+
+def test_find_timestamp_comment():
+    """Test if timestamp is found in file"""
+    freeplane2md.convert_file('test/test.mm', 'test/test.md')
+    assert(freeplane2md.find_timestamp_comment('test/test.md'))
+
+
+def test_timestamp():
+    """Test if timestamp is added to file"""
+    freeplane2md.convert_file('test/test.mm', 'test/test.md')
+    assert(freeplane2md.find_timestamp_comment('test/test.md'))
+
+
+def test_check_overwrite_file():
+    """Test if existing file is overwritten"""
+    # Create a file to be overwritten
+    with open('test/overwrite.md', 'w') as overwrite:
+        overwrite.write("This file will be overwritten.")
+    # Run conversion
+    freeplane2md.convert_file('test/test.mm', 'test/overwrite.md', no_timestamp=True)
+    with open('test/expected.md') as expected, open('test/overwrite.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+
+# TODO: Does still overwrite when called as function convert_file, but not when called as main
+def test_check_no_overwrite_file():
+    """Test if existing file is not overwritten"""
+    # Create a file to be overwritten
+    with open('test/no-overwrite.md', 'w') as no_overwrite:
+        no_overwrite.write("This file will not be overwritten.")
+        freeplane2md.add_timestamp('test/test.mm', no_overwrite)
+    # TODO: Touch file (change date) first?
+    # Run conversion
+    freeplane2md.convert_file('test/test.mm', 'test/no-overwrite.md')
+    with open('test/no-overwrite.md') as testee:
+        assert(testee.read().startswith("This file will not be overwritten."))
+
+# TODO: Test no overwrite using timestamp
+# TODO: Test no overwrite when called as main
