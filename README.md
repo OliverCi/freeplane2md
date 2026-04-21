@@ -26,7 +26,7 @@ There are already several scripts and plugins that export or convert to Markdown
   - Links to local Markdown files are converted to `[[WikiLinks]]` as understood by many tools.
 - Freeplane connections between nodes are converted to document local links.
 - Checkbox icons are converted to Markdown extended syntax checkboxes (`- [ ]`, `- [x]`).
-- Basic support for HTML embedded in nodes. (May disarray nesting of related nodes translated into consecutive paragraphs).
+- Robust support for HTML embedded in nodes. HTML blocks correctly inherit Markdown list nesting/indentation structures.
 - Command line interface
 - Scriptable function which can be used by other programs
 - When called as a program via CLI, it tries to detect accidental overwrites of targets, which have been edited after conversion. Can be overwritten with -f.
@@ -129,6 +129,11 @@ freeplane2md can also be used from other scripts by importing it as a Python mod
     import freeplane2md
     freeplane2md.convert_file('example.mm', 'example.md')
 
+If you want to invoke conversions programmatically while still inheriting the CLI's safety protections (like `check_overwrite` or flag processing), you can now pass argument overrides directly into `main()`:
+
+    import freeplane2md
+    freeplane2md.main(['example.mm', '--headerlevel=2'])
+
 ## Installation
 
 freeplane2md requires Python 3.9 or higher, and the following packages need to be installed:
@@ -144,7 +149,6 @@ The above packages can be installed individually with pip or all at once with:
 
 ## Planned improvements
 
-- Better HTML handling, when interfering with indentation and nesting of consecutive paragraphs.
 - Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
 - Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping within the same node.
 - Easier installation.

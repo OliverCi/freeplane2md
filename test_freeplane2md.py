@@ -22,22 +22,18 @@ def test_convert_file():
 
 # ---
 
-def test_main(monkeypatch):
+def test_main():
     """Test testing the CLI
     Test by setting command line parameters and run main instead of inner function."""
-    monkeypatch.setattr('sys.argv', ['freeplane2md.py', 'test/test.mm', '--no-timestamp'])
-    freeplane2md.main()
+    freeplane2md.main(['test/test.mm', '--no-timestamp'])
     with open('test/expected.md') as expected, open('test/test.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
-def test_edge_cases_main(monkeypatch):
+def test_edge_cases_main():
     """Several edge-cases, such as empty nodes, overlapping links and
     connectors etc.
     """
-    monkeypatch.setattr('sys.argv',
-                        ['freeplane2md.py','test/test-edge-cases.mm',
-                         '--headerlevel=2', '--no-timestamp'])
-    freeplane2md.main()
+    freeplane2md.main(['test/test-edge-cases.mm', '--headerlevel=2', '--no-timestamp'])
     with open('test/expected-edge-cases.md') as expected, open('test/test-edge-cases.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
@@ -97,12 +93,11 @@ def test_todo_all():
     with open('test/expected-todo_all.md') as expected, open('test/test-todo_all.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
-def test_todo_all_main(monkeypatch):
-    monkeypatch.setattr('sys.argv', ['freeplane2md.py', 'test/test-todo-misc.mm', '--todo_all', '--no-timestamp'])
+def test_todo_all_main():
     """Classic behavior now on option --todo_all: Add checkboxes to all
     list items, even if higher level node was already marked explicitly
     with (task) icon in input mind map"""
-    freeplane2md.main()
+    freeplane2md.main(['test/test-todo-misc.mm', '--todo_all', '--no-timestamp'])
     with open('test/expected-todo_all.md') as expected, open('test/test-todo_all.md') as testee:
         assert(expected.readlines() == testee.readlines())
 
@@ -179,18 +174,54 @@ def test_check_overwrite_file():
         assert(expected.readlines() == testee.readlines())
 
 
-# TODO: Does still overwrite when called as function convert_file, but not when called as main
 def test_check_no_overwrite_file():
-    """Test if existing file is not overwritten"""
-    # Create a file to be overwritten
+    """Test if existing file is not overwritten by evaluating the internal unit utility"""
+    import time
+    import os
+    import pytest
+    
+    # Create a file to be overwritten. 
+    # Use \n so the timestamp comment (appended directly after) lands on a new line and can be parsed by re.match.
     with open('test/no-overwrite.md', 'w') as no_overwrite:
-        no_overwrite.write("This file will not be overwritten.")
+        no_overwrite.write("This file will not be overwritten.\n")
         freeplane2md.add_timestamp('test/test.mm', no_overwrite)
-    # TODO: Touch file (change date) first?
-    # Run conversion
-    freeplane2md.convert_file('test/test.mm', 'test/no-overwrite.md')
+        
+    # check_overwrite only skips overwriting if the file's disk mtime is > 2 seconds older than the parsed timestamp.
+    # We sleep and use os.utime to artificially increment the mtime to simulate a human edit.
+    time.sleep(2.5) 
+    os.utime('test/no-overwrite.md', None)
+    
+    # Unit test the function directly instead of going through main()
+    args = {'--force': False, '--no-clobber': False}
+    with pytest.raises(SystemExit):
+        freeplane2md.check_overwrite(args, 'test/no-overwrite.md')
+        
     with open('test/no-overwrite.md') as testee:
         assert(testee.read().startswith("This file will not be overwritten."))
 
-# TODO: Test no overwrite using timestamp
-# TODO: Test no overwrite when called as main
+def test_check_no_overwrite_when_called_as_main():
+    """Test the overwrite evaluation behaves correctly when driven natively from the CLI main execution"""
+    import time
+    import os
+    import pytest
+    
+    # Create a file to be overwritten, using a newline for re.match parsing
+    with open('test/no-overwrite-main.md', 'w') as no_overwrite:
+        no_overwrite.write("This file will not proceed.\n")
+        freeplane2md.add_timestamp('test/test.mm', no_overwrite)
+        
+    # Sleep to trigger the check_overwrite 2-second buffer window
+    time.sleep(2.5) 
+    os.utime('test/no-overwrite-main.md', None)
+    
+    with pytest.raises(SystemExit):
+        freeplane2md.main(['test/test.mm', '-o', 'test/no-overwrite-main.md'])
+        
+    with open('test/no-overwrite-main.md') as testee:
+        assert(testee.read().startswith("This file will not proceed."))
+
+def test_html_indentation():
+    """Test that nested HTML rich content correctly respects the Markdown list indentation"""
+    freeplane2md.convert_file('test/test-html-indentation.mm', 'test/test-html-indentation.md', no_timestamp=True)
+    with open('test/expected-html-indentation.md') as expected, open('test/test-html-indentation.md') as testee:
+        assert(expected.readlines() == testee.readlines())

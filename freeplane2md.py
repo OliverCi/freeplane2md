@@ -112,8 +112,8 @@ icon_mapping_extended_tasks = {'stop-sign': '[s]', 'info': '[i]'
 task_icons = set(icon_mapping_task | icon_mapping_todo | icon_mapping_extended_tasks )
 
 
-def main():
-    args = docopt(__doc__, version='freeplane2md 0.10.2')
+def main(argv=None):
+    args = docopt(__doc__, version='freeplane2md 0.10.2', argv=argv)
 
     if args['--verbose']:
         print(args, file=stderr)
@@ -250,8 +250,8 @@ def process_node(node, level, headerlevel=1, todo=''):
         markers = indent*(level-headerlevel-1) + bullet 
         ending = ''
 
-    yield ( markers + icons_md + indent_multiline_text(map_links(node), level-headerlevel) + add_custom_ids(node)
-        + map_richcontent(node) + ending )
+    yield ( markers + icons_md + indent_multiline_text(map_links(node), max(0, level-headerlevel)) + add_custom_ids(node)
+        + map_richcontent(node, max(0, level-headerlevel)) + ending )
 
     # If this node already contained task icon in input mind map, do
     # not convert child items to tasks
@@ -304,8 +304,12 @@ def map_links(node):
     return f'[{text}]({link_str})'
 
 
-def map_richcontent(node):
-    """Return HTML content of node as string usable within Markdown"""
+def map_richcontent(node, indent_level=0):
+    """Return HTML content of node as string usable within Markdown
+    
+    Accepts 'indent_level' to ensure HTML blocks correctly inherit the margin 
+    multiplier so that consecutive paragraphs don't break out of nested Markdown lists.
+    """
     html = ""
     if node.find('richcontent') is not None:
         html_body = node.find('richcontent').find('html').find('body')
@@ -316,8 +320,10 @@ def map_richcontent(node):
         # Remove surrounding body tags
         html = re.sub(r"^\s*<body>", "", html)
         html = re.sub(r"</body>\s*$", "", html)
-        # Exactly one empty line before and after HTML block
-        html = "\n\n" + html.strip() + "\n"
+        # Exactly one empty line before and after HTML block, with proper indentation
+        html = html.strip()
+        if html:
+            html = "\n\n" + (indent * indent_level) + indent_multiline_text(html, indent_level) + "\n"
     return html
 
 
@@ -367,7 +373,6 @@ def link_targets(tree):
 
 def indent_multiline_text(text, level):
     """Ensure correct indentation of nodes with multiline text"""
-    # TODO: Apply same indentation follow to HTML rich content too
     return ('\n' + indent*level).join(text.splitlines())
 
 
