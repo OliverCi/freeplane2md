@@ -26,7 +26,7 @@ There are already several scripts and plugins that export or convert to Markdown
   - Links to local Markdown files are converted to `[[WikiLinks]]` as understood by many tools.
 - Freeplane connections between nodes are converted to document local links.
 - Checkbox icons are converted to Markdown extended syntax checkboxes (`- [ ]`, `- [x]`).
-- Robust support for HTML embedded in nodes. HTML blocks correctly inherit Markdown list nesting/indentation structures.
+- Support for HTML embedded in nodes. HTML blocks inherit Markdown list nesting/indentation structures.
 - Command line interface
 - Scriptable function which can be used by other programs
 - When called as a program via CLI, it tries to detect accidental overwrites of targets, which have been edited after conversion. Can be overwritten with -f.
@@ -136,19 +136,19 @@ If you want to invoke conversions programmatically while still inheriting the CL
 
 ## Installation
 
-freeplane2md requires Python 3.9 or higher, and the following packages need to be installed:
+freeplane2md requires Python 3.7 or higher and can be easily installed using `pip`.
 
-- [docopt](https://pypi.org/project/docopt/)
-- [validators](https://pypi.org/project/validators/)
-- [python-dateutil](https://pypi.org/project/python-dateutil/)
-- [pytest](https://pypi.org/project/pytest/) (if you want to run the automated tests)
+To install the tool globally or in a virtual environment from the cloned repository, run the following command from the root directory:
 
-The above packages can be installed individually with pip or all at once with:
+    pip install .
 
-    pip install -r requirements.txt
+This will automatically install all required dependencies and add the `freeplane2md` command to your system path, allowing you to run it from anywhere!
+
+If you wish to develop or run the automated tests, you can install the development dependencies with:
+
+    pip install .[dev]
 
 ## Planned improvements
 
 - Support further Freeplane features, such as embedded Markdown, $\LaTeX$ or notes.
 - Test and fix some edge cases, e.g. with empty nodes or connections and links overlapping within the same node.
-- Easier installation.
