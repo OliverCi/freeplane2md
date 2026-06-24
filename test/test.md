@@ -40,4 +40,4 @@
   - [Local hyperlink (not connection) backwards](#ID_1195614690)
   - [Local hyperlink forward](#ID_244066349)
   - Second target for hyperlink {#ID_244066349}
-<!-- freeplane2md: Converted from test/test.mm at 2026-04-21T18:31:28+02:00 -->
+<!-- freeplane2md: Converted from test/test.mm at 2026-06-24T13:30:55+02:00 -->

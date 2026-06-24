@@ -225,3 +225,41 @@ def test_html_indentation():
     freeplane2md.convert_file('test/test-html-indentation.mm', 'test/test-html-indentation.md', no_timestamp=True)
     with open('test/expected-html-indentation.md') as expected, open('test/test-html-indentation.md') as testee:
         assert(expected.readlines() == testee.readlines())
+
+def test_issue_9_html_interrupts_nesting():
+    """Regression test for issue #9: HTML blocks inside nested list items must keep list nesting."""
+    freeplane2md.convert_file('test/test-issue-9-html-interrupts-nesting.mm',
+                              'test/test-issue-9-html-interrupts-nesting.md',
+                              no_timestamp=True)
+    with open('test/expected-issue-9-html-interrupts-nesting.md') as expected, \
+            open('test/test-issue-9-html-interrupts-nesting.md') as testee:
+        assert(expected.readlines() == testee.readlines())
+
+
+def test_verbose_main(monkeypatch):
+    """Test that the script prints parsed args to stderr when verbose"""
+    import io
+    err_out = io.StringIO()
+    monkeypatch.setattr(freeplane2md, 'stderr', err_out)
+    freeplane2md.main(['test/test.mm', '--verbose', '-o', 'test/test-verbose.md'])
+    assert "test/test.mm" in err_out.getvalue()
+
+def test_todo_main():
+    """Test the --todo flag via main()"""
+    freeplane2md.main(['test/test.mm', '--todo', '-o', 'test/test-todo-cli.md', '--no-timestamp'])
+    with open('test/expected-todo.md') as expected, open('test/test-todo-cli.md') as testee:
+        assert expected.readlines() == testee.readlines()
+
+def test_no_clobber_main(monkeypatch):
+    """Test that --no-clobber prevents overwriting and prints to stderr"""
+    import pytest
+    import io
+    err_out = io.StringIO()
+    monkeypatch.setattr(freeplane2md, 'stderr', err_out)
+    with open('test/no-clobber-test.md', 'w') as f:
+        f.write('Initial content')
+    
+    with pytest.raises(SystemExit):
+         freeplane2md.main(['test/test.mm', '--no-clobber', '-o', 'test/no-clobber-test.md'])
+    
+    assert 'already exists; did not overwrite.' in err_out.getvalue()
