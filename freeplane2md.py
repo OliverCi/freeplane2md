@@ -207,7 +207,12 @@ def convert_file(freeplane_path, markdown_path, headerlevel=1, todo='',
         icon_mapping |= icon_mapping_todo
 
     ending = '\n'
-    tree = ET.parse(freeplane_path)
+    try:
+        tree = ET.parse(freeplane_path)
+    except OSError as e:
+        print(f"freeplane2md: cannot read input file '{freeplane_path}': "
+              f"{e.strerror or e}", file=stderr)
+        exit(1)
     root = tree.getroot()
 
     # Handle docopt limitation, if file shall default to stdout  

@@ -263,3 +263,16 @@ def test_no_clobber_main(monkeypatch):
          freeplane2md.main(['test/test.mm', '--no-clobber', '-o', 'test/no-clobber-test.md'])
     
     assert 'already exists; did not overwrite.' in err_out.getvalue()
+
+def test_missing_input_file_fails_cleanly(monkeypatch, capfd):
+    """A missing input mind map must exit 1 with a message, not a traceback."""
+    import pytest
+    import io
+    err_out = io.StringIO()
+    monkeypatch.setattr(freeplane2md, 'stderr', err_out)
+    with pytest.raises(SystemExit) as exc:
+        freeplane2md.convert_file('test/does-not-exist.mm', 'test/does-not-exist.md')
+    assert exc.value.code == 1
+    assert 'does-not-exist.mm' in err_out.getvalue()
+    captured = capfd.readouterr()
+    assert 'Traceback' not in captured.err
